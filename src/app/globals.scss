@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+:root {
+	--background: #ffffff;
+	--foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
+}
+
+body {
+	@apply text-base overflow-hidden;
+
+	font-family: var(--font-zen), sans-serif;
+	color: rgb(var(--foreground-rgb));
+	background-color: #ffffff;
+
+	@media screen and (width <= 1200px) {
+		font-size: 16px;
+	}
+
+	@media screen and (width <= 992px) {
+		font-size: 14px;
+	}
+}
