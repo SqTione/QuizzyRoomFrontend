@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 import { Providers } from './providers'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
