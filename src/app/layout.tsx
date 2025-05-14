@@ -1,7 +1,9 @@
 import './globals.css'
+import { Providers } from './providers'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
+import { Toaster } from 'sonner'
 
 const zen = Montserrat({
 	subsets: ['cyrillic', 'latin'],
@@ -26,7 +28,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru'>
-			<body className={`${zen.variable}`}>{children}</body>
+			<body className={`${zen.variable}`}>
+				{children}
+				<Providers>
+					<Toaster
+						theme='light'
+						position='bottom-right'
+						duration={1500}
+					/>
+				</Providers>
+			</body>
 		</html>
 	)
 }
