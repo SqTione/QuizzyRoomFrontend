@@ -1,5 +1,6 @@
 import './globals.scss'
 import { Providers } from './providers'
+import { Footer } from '@/components/footer/Footer'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
@@ -29,6 +30,7 @@ export default function RootLayout({
 	return (
 		<html lang='ru'>
 			<body className={`${zen.variable}`}>
+				<header>Logo</header>
 				{children}
 				<Providers>
 					<Toaster
@@ -37,6 +39,7 @@ export default function RootLayout({
 						duration={1500}
 					/>
 				</Providers>
+				<Footer></Footer>
 			</body>
 		</html>
 	)
