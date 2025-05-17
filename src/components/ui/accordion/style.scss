@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+.accordion {
+	width: 100%;
+
+	&.active {
+		button {
+			transform: rotateX(180deg)
+		}
+	}
+
+	&-header {
+		@apply flex justify-between items-center pb-3 font-extrabold text-xl text-black uppercase border-b cursor-pointer;
+
+
+		button {
+			background: transparent;
+		}
+	}
+
+	&-body {
+		@apply mt-5 w-full max-h-0 opacity-0 overflow-hidden;
+		transition: max-height .25s ease-in, opacity .25s ease-in;
+
+		&.active {
+			@apply max-h-[500px] opacity-100;
+		}
+	}
+}

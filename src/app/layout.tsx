@@ -1,14 +1,15 @@
-import './globals.scss'
-import { Providers } from './providers'
 import { Footer } from '@/components/footer/Footer'
+import { Header } from '@/components/header/Header'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { Toaster } from 'sonner'
+import './globals.css'
+import { Providers } from './providers'
 
 const zen = Montserrat({
 	subsets: ['cyrillic', 'latin'],
-	weight: ['300', '400', '500', '600', '700'],
+	weight: ['300', '400', '500', '600', '700', '800'],
 	display: 'swap',
 	variable: '--font-zen',
 	style: ['normal']
@@ -30,7 +31,7 @@ export default function RootLayout({
 	return (
 		<html lang='ru'>
 			<body className={`${zen.variable}`}>
-				<header>Logo</header>
+				<Header />
 				{children}
 				<Providers>
 					<Toaster
@@ -39,7 +40,7 @@ export default function RootLayout({
 						duration={1500}
 					/>
 				</Providers>
-				<Footer></Footer>
+				<Footer />
 			</body>
 		</html>
 	)

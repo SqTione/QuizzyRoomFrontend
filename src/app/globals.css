@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+:root {
+	--background: #f2f4df;
+	--foreground: #171717;
+
+	--color-primary: #EB5D35;
+	--color-secondary: #EB5D35;
+	--color-success: #018D36;
+	--color-danger: #E7452E;
+	--color-warning: #F3B220;
+	--color-lemon-100: #F2F4DF;
+}
+
+@theme {
+	/* TODO: To figure out how to use colors from constants */
+ --color-primary: #EB5D35;
+ --color-secondary: #EB5D35;
+ --color-success: #018D36;
+ --color-danger: #E7452E;
+ --color-warning: #F3B220;
+ --color-lemon-100: #F2F4DF;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	@apply text-base overflow-x-hidden;
+
+	display: flex;
+	flex-direction: column;
+	padding-top: 1.25rem;
+	min-height: 100vh;
+
+	font-family: var(--font-zen), sans-serif;
+	color: rgb(var(--foreground-rgb));
+	background-color: var(--background);
+
+	/* @media screen and (width <= 1200px) {
+		font-size: 16px;
+	}
+
+	@media screen and (width <= 992px) {
+		font-size: 14px;
+	} */
+}
+
+/* Base */
+.container {
+	position: relative;
+	padding: 0 1.5rem;
+	max-width: 100vw;
+	width: 100%;
+
+	/* @media screen and (width >= 768px) {
+		padding: 0 4rem;
+	} */
+}
+
+h1, h2 {
+	@apply font-extrabold text-3xl text-black uppercase;
+}
+
+h3 {
+	@apply font-extrabold text-xl text-black uppercase;
+}
+
+h4.subtitle {
+	@apply font-extrabold text-base uppercase;
+}
+
+section {
+	margin-top: 5rem;
+}
