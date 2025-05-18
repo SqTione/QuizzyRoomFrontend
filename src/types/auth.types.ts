@@ -1,6 +1,12 @@
 import { IUser } from './user.types'
 
-export interface IAuthForm {
+export interface ISignInForm {
+	email: string
+	password: string
+}
+
+export interface IRegisterForm {
+	name: string
 	email: string
 	password: string
 }
