@@ -1,0 +1,9 @@
+button {
+	background: linear-gradient(to right, var(--color-primary), var(--color-primary) , var(--color-warning));
+	background-size: 300% 100%;
+	transition: all .4s ease-in-out;
+}
+
+button:hover {
+	background-position: 100% 0;
+}

@@ -1,0 +1,30 @@
+.burger-menu__button {
+	background: black !important;
+}
+
+.burger-menu__close-btn {
+	align-self: flex-end;
+	background: none !important;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: -4px;
+		right: -4px;
+		display: block;
+		width: 32px;
+		height: 32px;
+		background-color: transparent;
+		border-radius: 999px;
+		opacity: 0;
+		transition: background .25s ease-in, opacity .25s ease-in;
+		z-index: 0;
+	}
+
+	&:hover {
+		&:before {
+			background-color: black;
+			opacity: 0.1;
+		}
+	}
+}
