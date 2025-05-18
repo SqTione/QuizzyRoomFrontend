@@ -27,16 +27,18 @@
 }
 
 body {
-	@apply text-base overflow-x-hidden;
+	@apply text-base;
 
 	display: flex;
 	flex-direction: column;
-	padding-top: 1.25rem;
 	min-height: 100vh;
+	width: 100vw;
 
 	font-family: var(--font-zen), sans-serif;
 	color: rgb(var(--foreground-rgb));
 	background-color: var(--background);
+
+	overflow-x: hidden;
 
 	/* @media screen and (width <= 1200px) {
 		font-size: 16px;
@@ -49,14 +51,21 @@ body {
 
 /* Base */
 .container {
-	position: relative;
 	padding: 0 1.5rem;
 	max-width: 100vw;
 	width: 100%;
+}
 
-	/* @media screen and (width >= 768px) {
+@media screen and (min-width: 768px) {
+	.container {
 		padding: 0 4rem;
-	} */
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.container {
+		padding: 0 7.5rem;
+	}
 }
 
 h1, h2 {

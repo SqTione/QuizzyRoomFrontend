@@ -36,9 +36,9 @@ export function Menu() {
       {/* Меню */}
       <nav
         ref={menuRef}
-        className={`burger-menu fixed top-0 ${
-          isOpen ? 'left-0' : 'left-full'
-        } flex flex-col px-5 py-8 w-screen h-screen bg-lemon-100 rounded-l-3xl z-50 transition-all duration-300`}
+        className={`burger-menu absolute top-0 right-0 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        } md:w-1/3 flex flex-col px-5 py-8 w-screen h-screen bg-lemon-100 rounded-l-3xl z-50 transition-all duration-300`}
       >
         <button className="burger-menu__close-btn relative" onClick={handleCloseMenu}>
           <img src="/icons/cross.svg" alt="Закрыть меню" />
