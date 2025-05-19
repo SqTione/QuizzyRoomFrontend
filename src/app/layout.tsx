@@ -1,5 +1,5 @@
-import { Footer } from '@/components/footer/Footer'
-import { Header } from '@/components/header/Header'
+import { FooterGuest } from '@/components/guest-layout/footer/FooterGuest'
+import { HeaderGuest } from '@/components/guest-layout/header/HeaderGuest'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
@@ -31,16 +31,16 @@ export default function RootLayout({
 	return (
 		<html lang='ru'>
 			<body className={`${zen.variable}`}>
-				<Header />
-				{children}
 				<Providers>
+				<HeaderGuest />
+				{children}
 					<Toaster
 						theme='light'
 						position='bottom-right'
 						duration={1500}
 					/>
+				<FooterGuest />
 				</Providers>
-				<Footer />
 			</body>
 		</html>
 	)

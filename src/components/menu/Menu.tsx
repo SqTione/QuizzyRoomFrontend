@@ -1,8 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import { useRef, useState } from 'react'
+import { GUEST_MENU } from './menu.data'
 import './menu.scss'
+import { MenuItem } from './MenuItem'
 
 export function Menu() {
 	const [isOpen, setIsOpen] = useState(false)
@@ -18,6 +19,8 @@ export function Menu() {
 	const handleCloseMenu = () => {
 		setIsOpen(false)
 	}
+
+  const menu = GUEST_MENU
 
 	return (
 		<>
@@ -44,15 +47,14 @@ export function Menu() {
           <img src="/icons/cross.svg" alt="Закрыть меню" />
         </button>
         <ul className="flex flex-col gap-3 mt-8">
-          <li>
-            <Link href="/" onClick={handleCloseMenu}>Главная</Link>
-          </li>
-          <li>
-            <Link href="/" onClick={handleCloseMenu}>Вход</Link>
-          </li>
-          <li>
-            <Link href="/" onClick={handleCloseMenu}>Регистрация</Link>
-          </li>
+          {/* Dynamic output of menu items */}
+          {menu.map(item => (
+            <MenuItem 
+              item={item} 
+              key={item.link} 
+              onClick={handleCloseMenu}
+            />
+          ))}
         </ul>
       </nav>
 
