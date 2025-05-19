@@ -1,4 +1,5 @@
-import { forwardRef } from 'react'
+import { Eye, EyeOff } from 'lucide-react'
+import { forwardRef, useState } from 'react'
 
 interface InputFieldProps {
 	id: string
@@ -27,27 +28,30 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 		},
 		ref
 	) => {
+		const [showPassword, setShowPassword] = useState(false)
+		const isPassword = type === 'password'
+		
 		return (
-			<div className={`${extra}`}>
+			<div className={`relative ${extra}`}>
 				<label
 					htmlFor={id}
-					className={`text-sm text-white/60 dark:text-white ml-1.5 font-medium`}
+					className={`hidden text-sm text-black/6 font-medium`}
 				>
 					{label}
 				</label>
 				<input
 					ref={ref}
 					disabled={disabled}
-					type={type}
+					type={isPassword && showPassword ? 'text' : type}
 					id={id}
 					placeholder={placeholder}
-					className={`mt-2 flex w-full items-center justify-center rounded-lg border border-border bg-white/0 p-3 text-base outline-none placeholder:text-white/30 placeholder:font-normal duration-500 transition-colors focus:border-primary ${
+					className={`mt-2 flex w-full items-center justify-center border-b p-3 text-base outline-none placeholder:text-black placeholder:font-light duration-500 transition-colors ${
 						disabled === true
-							? '!border-none !bg-gray-100 dark:!bg-white/5 dark:placeholder:!text-[rgba(255,255,255,0.15)]'
+							? '!border-black/60 !text-black/60'
 							: state === 'error'
-								? 'border-red-500 text-red-500 placeholder:text-red-500 dark:!border-red-400 dark:!text-red-400 dark:placeholder:!text-red-400'
+								? 'border-danger text-danger placeholder:text-danger'
 								: state === 'success'
-									? 'border-green-500 text-green-500 placeholder:text-green-500 dark:!border-green-400 dark:!text-green-400 dark:placeholder:!text-green-400'
+									? 'border-success text-suborder-success placeholder:text-suborder-success'
 									: ''
 					}`}
 					onKeyDown={event => {
@@ -65,7 +69,23 @@ export const Field = forwardRef<HTMLInputElement, InputFieldProps>(
 					}}
 					{...rest}
 				/>
+
+				{/* Show/Hide password button */}
+				{isPassword && (
+					<button
+						type="button"
+						className="absolute right-3 top-1/2 -translate-y-1/2 text-black/50 hover:text-black transition-all"
+						onClick={() => setShowPassword(prev => !prev)}
+						tabIndex={-1}
+					>
+						<div className="relative w-5 h-5">
+							{/* Глаз */}
+							{showPassword ? <Eye className="w-5 h-5" color='black' /> : <EyeOff className="w-5 h-5" color='black' /> }
+						</div>
+					</button>
+				)}
 			</div>
+			
 		)
 	}
 )

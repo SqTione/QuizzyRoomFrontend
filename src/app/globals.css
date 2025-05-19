@@ -27,7 +27,7 @@
 }
 
 body {
-	@apply text-base;
+	@apply font-light text-base;
 
 	display: flex;
 	flex-direction: column;

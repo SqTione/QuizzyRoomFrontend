@@ -4,7 +4,7 @@ import './button.scss'
 type TypeButton = ButtonHTMLAttributes<HTMLButtonElement>
 
 export function Button({
-	children,
+	children, 
 	className,
 	...rest
 }: PropsWithChildren<TypeButton>) {

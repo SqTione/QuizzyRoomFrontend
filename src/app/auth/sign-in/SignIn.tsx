@@ -1,7 +1,8 @@
 'use client'
 
+import { Checkbox } from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
-import { DASHBOARD_PAGES } from '@/config/pages-url.config'
+import { DASHBOARD_PAGES, GUEST_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
 import { ISignInForm } from '@/types/auth.types'
 import { useMutation } from '@tanstack/react-query'
@@ -35,17 +36,22 @@ export function SignIn() {
 
 	return (
 		<main className="container flex min-h-screen">
-			<form className="" onSubmit={handleSubmit(onSubmit)}>
-				<div className='form__header'>
-					<h1>Вход</h1>
-					<hr />
-					<p>У вас нет аккаунта? <Link href='/auth/sign-up'></Link></p>
+			<form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+				<div className='form__header mb-8 w-max'>
+					<h1 className='pb-5'>Вход</h1>
+					<hr className='pb-5'/>
+					<p className='flex flex-col'>
+						У вас нет аккаунта? 
+						<Link 
+							href={GUEST_PAGES.SIGN_UP}
+							className='font-medium text-primary underline underline-offset-4'>Зарегистрируйтесь!</Link>
+					</p>
 				</div>
-				<div className="form__body">
+				<div className="form__body w-full">
 					<Field 
 						id='email'
 						label='Email:'
-						placeholder='Введите Email'
+						placeholder='Логин'
 						type='email'
 						extra='mb-4' 
 						{...register('email', {
@@ -54,12 +60,13 @@ export function SignIn() {
 					<Field 
 						id='password'
 						label='Password:'
-						placeholder='Введите пароль'
+						placeholder='Пароль'
 						type='password'
 						extra='mb-4' 
 						{...register('password', {
 							required: 'Пароль является обязательным полем'
 						})}/>
+					<Checkbox id='remember' label='Запомнить меня' />
 				</div>
 			</form>
 		</main>
