@@ -6,7 +6,7 @@ import { Logo } from '../../logo/Logo'
 
 export function FooterGuest() {
 	return (
-		<footer className="container flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm">
+		<footer className="container relative flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm z-20">
 			<div className='md:w-1/4 w-1/2'>
 				<Logo className="block !mb-3" />
 				<p className='mb-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>

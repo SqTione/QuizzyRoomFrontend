@@ -28,7 +28,7 @@ export function Home() {
 		</main>
 
 		{/* Section "Quizzes" */}
-		<section className='container'>
+		<section className='container section'>
 			<h4 className="subtitle mb-3">Квизы</h4>
 			<div className="flex flex-col gap-5 !mb-5 w-2/3">
 				<hr />
@@ -48,7 +48,7 @@ export function Home() {
 			</div>
 		</section>
 		{/* Section "About" */}
-		<section className='container'>
+		<section className='container section mb-15'>
 			<h4 className="subtitle mb-3">Квизы</h4>
 			<div className="flex flex-col gap-5 !mb-5 w-2/3">
 				<hr />

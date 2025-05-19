@@ -80,6 +80,6 @@ h4.subtitle {
 	@apply font-extrabold text-base uppercase;
 }
 
-section {
+.section {
 	margin-top: 5rem;
 }
