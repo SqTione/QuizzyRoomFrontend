@@ -1,5 +1,6 @@
 'use client'
 import { Button } from '@/components/ui/buttons/Button'
+import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { UseProfilePageData } from '@/hooks/useProfilePageData'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
@@ -102,9 +103,7 @@ export function Profile() {
 														<Button className='button--capsule button--success w-max'>
 																<img src="/icons/play.svg" alt="" />
 														</Button>
-														<Button className='button--capsule button--danger w-max'>
-																<img src="/icons/heart.svg" alt="" />
-														</Button>
+														<FavoriteButton quizId={quiz.id} />
 													</div>
 												</div>
 												<hr className='mt-5 border-gray-500'/>
@@ -129,9 +128,7 @@ export function Profile() {
 														<Button className='button--capsule button--success w-max'>
 																<img src="/icons/play.svg" alt="" />
 														</Button>
-														<Button className='button--capsule button--danger w-max'>
-																<img src="/icons/heart.svg" alt="" />
-														</Button>
+														<FavoriteButton quizId={quiz.id} />
 													</div>
 												</div>
 												<hr className='mt-5 border-gray-500'/>

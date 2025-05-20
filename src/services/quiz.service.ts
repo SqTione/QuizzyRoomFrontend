@@ -15,6 +15,18 @@ class QuizService {
 		const response = await axiosWithAuth.get<TypeUserFavoriteQuizzesResponse>(`${this.BASE_URL}/favorite`)
 		return response.data
 	}
+
+	// Adding quiz to favorites
+	async addToFavorites(quizId: string) {
+		const response = await axiosWithAuth.post<TypeUserFavoriteQuizzesResponse>(`${this.BASE_URL}/favorite/${quizId}`)
+		return response.data
+	}
+
+	// Removing quiz from favorites
+	async removeFromFavorites(quizId: string) {
+		const response = await axiosWithAuth.delete<TypeUserFavoriteQuizzesResponse>(`${this.BASE_URL}/favorite/${quizId}`)
+		return response.data
+	}
 }
 
 export const quizService = new QuizService()
