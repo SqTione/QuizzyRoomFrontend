@@ -3,6 +3,20 @@
 	background-size: 300% 100%;
 	transition: all .4s ease-in-out;
 
+	&:hover {
+		background-position: 100% 0;
+	}
+
+	&--success {
+		background: linear-gradient(to right, var(--color-success), var(--color-success) , #ddda0e);
+		background-size: 300% 100%;
+	}
+
+	&--danger {
+		background: linear-gradient(to right, var(--color-danger), var(--color-danger) , var(--color-warning));
+		background-size: 300% 100%;
+	}
+
 	&--bordered {
 		background: transparent !important;
 		color: var(--color-primary);
@@ -32,13 +46,12 @@
 		}
 	}
 	
-}
+	&--capsule {
+		padding: 4px 24px;
+		transform: skew(0) !important;
 
-.button:hover {
-	background-position: 100% 0;
-}
-
-.button--success {
-	background: linear-gradient(to right, var(--color-success), var(--color-success) , #ddda0e);
-	background-size: 300% 100%;
+		div {
+			transform: skew(0) !important;
+		}
+	}
 }

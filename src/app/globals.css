@@ -29,7 +29,7 @@
 }
 
 body {
-	@apply font-light text-base;
+	@apply font-light text-sm;
 
 	display: flex;
 	flex-direction: column;
@@ -40,6 +40,12 @@ body {
 	background-color: var(--background);
 
 	overflow-x: hidden;
+}
+
+@media screen and (max-height: 768px) {
+	body {
+		@apply text-base;
+	}
 }
 
 /* Base */
