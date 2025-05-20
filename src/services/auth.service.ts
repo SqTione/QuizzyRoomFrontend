@@ -1,5 +1,5 @@
 import { axiosClassic } from '@/api/interceptors'
-import { IAuthResponse, IRegisterForm, ISignInForm } from '@/types/auth.types'
+import { IAuthResponse, ISignInForm } from '@/types/auth.types'
 import { removeFromStorage, saveTokenStorage } from './auth-token.service'
 
 export const authService = {
@@ -16,11 +16,13 @@ export const authService = {
 	},
 
 	// Register function
-	async register(data: IRegisterForm) {
+	async register(data: ISignInForm) {
 		const response = await axiosClassic.post<IAuthResponse>(
 				'auth/register',
 				data
 		)
+
+		if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
 
 		return response
 	},

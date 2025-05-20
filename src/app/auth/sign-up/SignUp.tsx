@@ -5,7 +5,7 @@ import { Checkbox } from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
 import { DASHBOARD_PAGES, GUEST_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
-import { ISignInForm } from '@/types/auth.types'
+import { ISignUpForm } from '@/types/auth.types'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -13,7 +13,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
 export function SignUp() {
-	const {register, handleSubmit, reset} = useForm<ISignInForm>({
+	const {register, handleSubmit, reset} = useForm<ISignUpForm>({
 		mode: 'onChange'
 	})
 
@@ -21,7 +21,7 @@ export function SignUp() {
 
 	const { mutate } = useMutation({
 		mutationKey: ['auth'],
-		mutationFn: (data:ISignInForm) => authService.login(data),
+		mutationFn: (data:ISignUpForm) => authService.register(data),
 		onSuccess() {
 			toast.success('Успешная регистрация')
 			reset()
@@ -30,7 +30,7 @@ export function SignUp() {
 	})
 
 	// Form submit function
-	const onSubmit:SubmitHandler<ISignInForm> = data => {
+	const onSubmit:SubmitHandler<ISignUpForm> = data => {
 		mutate(data)
 	}
 
@@ -56,7 +56,7 @@ export function SignUp() {
 						placeholder='Имя'
 						type='text'
 						extra='mb-4' 
-						{...register('email', {
+						{...register('name', {
 							required: 'Имя является обязательным полем'
 						})}/>
 					<Field 

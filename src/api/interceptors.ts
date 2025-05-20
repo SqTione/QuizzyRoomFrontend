@@ -4,7 +4,7 @@ import axios, { type CreateAxiosDefaults } from 'axios'
 import { errorCatch } from './error'
 
 const options:CreateAxiosDefaults = {
-	baseURL: process.env.API_URL,
+	baseURL: process.env.NEXT_PUBLIC_API_URL,
 	headers: {
 		'Content-Type': 'application/json'
 	},

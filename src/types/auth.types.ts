@@ -5,7 +5,7 @@ export interface ISignInForm {
 	password: string
 }
 
-export interface IRegisterForm {
+export interface ISignUpForm {
 	name: string
 	email: string
 	password: string
