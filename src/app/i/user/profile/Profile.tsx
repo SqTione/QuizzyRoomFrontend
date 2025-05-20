@@ -8,7 +8,7 @@ export function Profile() {
 	const [activeTab, setActiveTab] = useState<'my' | 'favorites'>('my')
 	return (
 		<>
-			<main className='container flex gap-2.5 mt-8 mb-15 w-full !min-h-0'>
+			<main className='md:!w-2/3 container flex gap-2.5 mt-8 mb-15 w-full !min-h-0'>
 				<div className="w-[100px] h-[100px] shrink-0">
 					<img 
 						className='w-full h-full bg-gray-300 rounded-full'
@@ -32,8 +32,8 @@ export function Profile() {
 					</div>
 				</div>
 			</main>
-			<section className='container mb-15'>
 
+			<section className='container mb-15'>
         <div className="relative flex justify-center border-b border-gray-200 mb-5">
           <button
             className={`flex-1 py-3 text-center font-medium relative ${activeTab === 'my' ? 'text-primary' : 'text-gray-500'}`}
@@ -71,42 +71,61 @@ export function Profile() {
 							transition={{ duration: 0.2 }}
 						>
 							{activeTab == 'my' ? (
-								<div className="user-quizzes flex flex-col gap-5 mb-6">
-									<div className="quiz">
-										<h3 className='mb-3'>Название квиза</h3>
-										<div className='flex'>
-											<p className='quiz__description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa...</p>
-											<div className='flex flex-col gap-2'>
-												<Button className='button--capsule button--success w-max'>
-														<img src="/icons/play.svg" alt="" />
-												</Button>
-												<Button className='button--capsule button--danger w-max'>
-														<img src="/icons/heart.svg" alt="" />
-												</Button>
+								<div className='w-full'>
+									<div className="user-quizzes lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
+										<div className="quiz">
+											<h3 className='mb-3'>Название квиза</h3>
+											<div className='flex justify-between gap-5'>
+												<p className='quiz__description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa...</p>
+												<div className='flex flex-col gap-2'>
+													<Button className='button--capsule button--success w-max'>
+															<img src="/icons/play.svg" alt="" />
+													</Button>
+													<Button className='button--capsule button--danger w-max'>
+															<img src="/icons/heart.svg" alt="" />
+													</Button>
+												</div>
 											</div>
+											<hr className='mt-5 border-gray-500'/>
 										</div>
-										<hr className='mt-5 border-gray-500'/>
 									</div>
-									<Button className='button--bordered w-full mt-6'>Показать больше</Button>
+									<Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button>
 								</div>
 							): (
-								<div className="favorite-quizzes flex flex-col gap-5 mb-6">
-									<div className="quiz">
-										<h3 className='mb-3'>Название квиза</h3>
-										<div className='flex'>
-											<p className='quiz__description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa...</p>
-											<div className='flex flex-col gap-2'>
-												<Button className='button--capsule button--success w-max'>
-														<img src="/icons/play.svg" alt="" />
-												</Button>
-												<Button className='button--capsule button--danger w-max'>
-														<img src="/icons/heart.svg" alt="" />
-												</Button>
+								<div className='w-full'>
+									<div className="favorite-quizzes lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
+										<div className="quiz">
+											<h3 className='mb-3'>Название квиза</h3>
+											<div className='flex justify-between gap-5'>
+												<p className='quiz__description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa dignissim mollis. Etiam feugiat pulvinar quam ac  tincidunt. Sed non finibus quam. Sed varius venenatis ex vel mattis.  Nunc sit amet commodo neque, ut posuere augue. Integer tincidunt leo  mollis ante aliquam convallis..</p>
+												<div className='flex flex-col gap-2'>
+													<Button className='button--capsule button--success w-max'>
+															<img src="/icons/play.svg" alt="" />
+													</Button>
+													<Button className='button--capsule button--danger w-max'>
+															<img src="/icons/heart.svg" alt="" />
+													</Button>
+												</div>
 											</div>
+											<hr className='mt-5 border-gray-500'/>
 										</div>
-										<hr className='mt-5 border-gray-500'/>
+										<div className="quiz">
+											<h3 className='mb-3'>Название квиза</h3>
+											<div className='flex justify-between gap-5'>
+												<p className='quiz__description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa dignissim mollis. Etiam feugiat pulvinar quam ac  tincidunt. Sed non finibus quam. Sed varius venenatis ex vel mattis.  Nunc sit amet commodo neque, ut posuere augue. Integer tincidunt leo  mollis ante aliquam convallis..</p>
+												<div className='flex flex-col gap-2'>
+													<Button className='button--capsule button--success w-max'>
+															<img src="/icons/play.svg" alt="" />
+													</Button>
+													<Button className='button--capsule button--danger w-max'>
+															<img src="/icons/heart.svg" alt="" />
+													</Button>
+												</div>
+											</div>
+											<hr className='mt-5 border-gray-500'/>
+										</div>
 									</div>
-									<Button className='button--bordered w-full mt-6'>Показать больше</Button>
+									<Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button>
 								</div>
 							)}
 						</motion.div>
