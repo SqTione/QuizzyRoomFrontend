@@ -1,0 +1,25 @@
+.statistics {
+	position: relative;
+
+	* {
+		position: relative;
+		padding-left: 10px;
+		z-index: 20;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		display: block;
+		width: 200%;
+		height: 24px;
+		background-color: var(--color-warning);
+		z-index: 0;
+
+		@media screen and (min-width: 768px) {
+			width: 100%;
+		}
+	}
+}
+
