@@ -1,12 +1,17 @@
 'use client'
 import { Button } from '@/components/ui/buttons/Button'
+import { useProfile } from '@/hooks/useProfile'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import './profile.scss'
 
 export function Profile() {
 	const [activeTab, setActiveTab] = useState<'my' | 'favorites'>('my')
-	return (
+
+	const {data, isLoading} = useProfile()
+	return isLoading ? ( 
+		<div>Загрузка</div>
+	) : (
 		<>
 			<main className='md:!w-2/3 container flex gap-2.5 mt-8 mb-15 w-full !min-h-0'>
 				<div className="w-[100px] h-[100px] shrink-0">
@@ -17,17 +22,17 @@ export function Profile() {
 				</div>
 				<div className='w-full'>
 					<div className='pl-2.5 mb-3'>
-						<h3 className='mb-3'>SqTione</h3>
+						<h3 className='mb-3'>{data?.name}</h3>
 						<hr />
 					</div>
 					<div className='statistics flex gap-5'>
 						<div>
 							<p className='mb-1'>Победы:</p>
-							<p className='text-xl font-extrabold'>12</p>
+							<p className='text-xl font-extrabold'>{data?.userStatistics[0]?.totalWins}</p>
 						</div>
 						<div>
 							<p className='mb-1'>Участия:</p>
-							<p className='text-xl font-extrabold'>200</p>
+							<p className='text-xl font-extrabold'>{data?.userStatistics[0]?.totalPassed}</p>
 						</div>
 					</div>
 				</div>

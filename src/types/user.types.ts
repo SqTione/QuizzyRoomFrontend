@@ -3,3 +3,5 @@ export interface IUser {
 	name: string
 	email: string
 }
+
+export type TypeUserForm = Omit<IUser, 'id'> & {password?: string}
