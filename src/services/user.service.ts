@@ -24,7 +24,6 @@ class UserService {
 	// Get user profile data
 	async getProfile() {
 		const response = await axiosWithAuth.get<IProfileResponse>(this.BASE_URL)
-		console.log(response)
 		return response.data
 	}
 

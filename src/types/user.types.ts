@@ -4,4 +4,8 @@ export interface IUser {
 	email: string
 }
 
+export interface IUserQuizzesResponse {
+	
+}
+
 export type TypeUserForm = Omit<IUser, 'id'> & {password?: string}
