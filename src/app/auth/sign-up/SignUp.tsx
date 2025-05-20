@@ -3,9 +3,10 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { Checkbox } from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
-import { DASHBOARD_PAGES, GUEST_PAGES } from '@/config/pages-url.config'
+import { GUEST_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
 import { ISignUpForm } from '@/types/auth.types'
+import { translateErrorMessage } from '@/utils/translate-error'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -25,7 +26,21 @@ export function SignUp() {
 		onSuccess() {
 			toast.success('Успешная регистрация')
 			reset()
-			push(DASHBOARD_PAGES.HOME)
+			push(GUEST_PAGES.HOME)
+		},
+		onError: (error: any) => {
+			const serverMessage = error?.response?.data?.message
+			let messages: string[] = []
+
+			if (Array.isArray(serverMessage)) {
+				messages = serverMessage.map(msg => translateErrorMessage(msg))
+			} else if (typeof serverMessage === 'string') {
+				messages = [translateErrorMessage(serverMessage)]
+			} else {
+				messages = ['Произошла ошибка при входе']
+			}
+
+			messages.forEach(msg => toast.error(msg))
 		}
 	})
 

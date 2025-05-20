@@ -3,9 +3,10 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { Checkbox } from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
-import { DASHBOARD_PAGES, GUEST_PAGES } from '@/config/pages-url.config'
+import { GUEST_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
 import { ISignInForm } from '@/types/auth.types'
+import { translateErrorMessage } from '@/utils/translate-error'
 import { useMutation } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -23,11 +24,19 @@ export function SignIn() {
 	const { mutate } = useMutation({
 		mutationKey: ['auth'],
 		mutationFn: (data:ISignInForm) => authService.login(data),
-		onSuccess() {
+		onSuccess(response) {
 			toast.success('Успешный вход в аккаунт')
 			reset()
-			push(DASHBOARD_PAGES.HOME)
-		}
+			push(GUEST_PAGES.HOME)
+		},
+		onError: (error: any) => {
+			const serverMessage = error?.response?.data?.message
+			const message = typeof serverMessage === 'string'
+				? translateErrorMessage(serverMessage)
+				: 'Произошла ошибка при входе в аккаунт'
+
+			toast.error(message);
+  	}
 	})
 
 	// Form submit function
