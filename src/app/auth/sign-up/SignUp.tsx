@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { Checkbox } from '@/components/ui/checkbox/Checkbox'
 import { Field } from '@/components/ui/fields/Field'
-import { GUEST_PAGES } from '@/config/pages-url.config'
+import { DASHBOARD_PAGES, GUEST_PAGES } from '@/config/pages-url.config'
 import { authService } from '@/services/auth.service'
 import { ISignUpForm } from '@/types/auth.types'
 import { translateErrorMessage } from '@/utils/translate-error'
@@ -26,7 +26,7 @@ export function SignUp() {
 		onSuccess() {
 			toast.success('Успешная регистрация')
 			reset()
-			push(GUEST_PAGES.HOME)
+			push(DASHBOARD_PAGES.HOME)
 		},
 		onError: (error: any) => {
 			const serverMessage = error?.response?.data?.message
