@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/buttons/Button'
 export function Home() {
 	return (
 	 <>
-	 	<main className="container relative flex-1 flex flex-col justify-between w-ful z-20">
+	 	<main className="container relative flex flex-col justify-between w-ful z-20">
 			<div>
 				<div className="md:flex-col-reverse md:mt-20 md:w-1/3 flex mb-5 w-full">
 					<div className="md:w-full md:pr-0 pr-6 w-1/2">

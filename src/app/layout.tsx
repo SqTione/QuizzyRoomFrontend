@@ -30,16 +30,18 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru'>
-			<body className={`${zen.variable}`}>
+			<body className={`${zen.variable} flex flex-col min-h-screen`}>
 				<Providers>
-				<HeaderGuest />
-				{children}
-					<Toaster
-						theme='light'
-						position='bottom-right'
-						duration={1500}
-					/>
-				<FooterGuest />
+				<div className="w-full min-h-screen">
+					<HeaderGuest />
+					{children}
+						<Toaster
+							theme='light'
+							position='bottom-right'
+							duration={1500}
+						/>
+					<FooterGuest />
+				</div>
 				</Providers>
 			</body>
 		</html>

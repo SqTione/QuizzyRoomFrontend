@@ -12,8 +12,7 @@ import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-
-export function SignIn() {
+export function SignUp() {
 	const {register, handleSubmit, reset} = useForm<ISignInForm>({
 		mode: 'onChange'
 	})
@@ -24,7 +23,7 @@ export function SignIn() {
 		mutationKey: ['auth'],
 		mutationFn: (data:ISignInForm) => authService.login(data),
 		onSuccess() {
-			toast.success('Успешный вход в аккаунт')
+			toast.success('Успешная регистрация')
 			reset()
 			push(DASHBOARD_PAGES.HOME)
 		}
@@ -36,19 +35,30 @@ export function SignIn() {
 	}
 
 	return (
-		<main className="container flex flex-col justify-between min-h-[92vh]">
-			<form className="md:mt-8 md:w-1/2 relative w-full z-20" onSubmit={handleSubmit(onSubmit)}>
-				<div className='form__header mb-8 w-max'>
-					<h1 className='pb-5'>Вход</h1>
+		<main className="container flex flex-col justify-between">
+			<form 
+				className="md:mt-8 md:w-1/2 relative w-full z-20" 
+				onSubmit={handleSubmit(onSubmit)}>
+				<div className='form__header w-max'>
+					<h1 className='pb-5'>Регистрация</h1>
 					<hr className='pb-5'/>
 					<p className='flex flex-col'>
-						У вас нет аккаунта? 
+						Уже зарегистрированы?
 						<Link 
-							href={GUEST_PAGES.SIGN_UP}
-							className='font-medium text-primary underline underline-offset-4'>Зарегистрируйтесь!</Link>
+							href={GUEST_PAGES.SIGN_IN}
+							className='font-medium text-primary underline underline-offset-4'>Войдите!</Link>
 					</p>
 				</div>
 				<div className="form__body w-full">
+					<Field 
+						id='name'
+						label='Name:'
+						placeholder='Имя'
+						type='text'
+						extra='mb-4' 
+						{...register('email', {
+							required: 'Имя является обязательным полем'
+						})}/>
 					<Field 
 						id='email'
 						label='Email:'
@@ -68,10 +78,16 @@ export function SignIn() {
 							required: 'Пароль является обязательным полем'
 						})}/>
 					<Checkbox id='remember' label='Запомнить меня' />
+					<p className='mt-5'>
+						Регистрируясь вы соглашаетесь с 
+						<Link 
+							href='/' 
+							className='font-medium text-primary underline underline-offset-4'> пользовательским соглашением</Link>
+					</p>
 				</div>
 				<div className="form__footer flex flex-col gap-3 mt-8">
-					<Button className='button--success'>Войти</Button>
-					<Button className='button--bordered' href={GUEST_PAGES.SIGN_UP}>К регистрации</Button>
+					<Button className='button--success'>Зарегистрироваться</Button>
+					<Button className='button--bordered' href={GUEST_PAGES.SIGN_IN}>К входу</Button>
 				</div>
 			</form>
 			<div id='main-bottom'>

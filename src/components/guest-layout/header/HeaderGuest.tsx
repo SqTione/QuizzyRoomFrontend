@@ -11,7 +11,7 @@ export function HeaderGuest() {
 	const closeMenu = () => setIsMenuOpen(false)
 
 	return (
-		<header className="container flex justify-between items-center mb-5 mt-5 overflow-x-hidden">
+		<header className="container flex justify-between items-center w-full mb-5 mt-5 overflow-x-hidden">
 			<Logo />
 			<Menu />
 		</header>
