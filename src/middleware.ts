@@ -26,8 +26,6 @@ export async function middleware(
 	}
 
 	return NextResponse.next()
-
-	console.log(url, cookies)
 }
 
 export const config = {
