@@ -1,11 +1,12 @@
 'use client'
 
+import { GUEST_PAGES } from '@/config/pages-url.config'
 import Link from 'next/link'
-import { Logo } from '../logo/Logo'
+import { Logo } from '../../logo/Logo'
 
-export function Footer() {
+export function FooterGuest() {
 	return (
-		<footer className="container flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm">
+		<footer className="container relative flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm z-20">
 			<div className='md:w-1/4 w-1/2'>
 				<Logo className="block !mb-3" />
 				<p className='mb-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
@@ -15,9 +16,9 @@ export function Footer() {
 				<h4 className="subtitle mb-3">Меню</h4>
 				<nav>
 					<ul className='flex flex-col gap-2 underline underline-offset-4'>
-						<li><Link href='/'>Главная</Link></li>
-						<li><Link href='/'>Вход</Link></li>
-						<li><Link href='/'>Регистрация</Link></li>
+						<li><Link href={GUEST_PAGES.HOME}>Главная</Link></li>
+						<li><Link href={GUEST_PAGES.SIGN_IN}>Вход</Link></li>
+						<li><Link href={GUEST_PAGES.SIGN_UP}>Регистрация</Link></li>
 					</ul> 
 				</nav>
 			</div>

@@ -1,9 +1,44 @@
-button {
+.button {
 	background: linear-gradient(to right, var(--color-primary), var(--color-primary) , var(--color-warning));
 	background-size: 300% 100%;
 	transition: all .4s ease-in-out;
+
+	&--bordered {
+		background: transparent !important;
+		color: var(--color-primary);
+		border: 2px solid transparent;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+			border: 2px solid transparent;
+			border-radius: 12px;
+			background: linear-gradient(90deg, var(--color-primary), var(--color-primary), var(--color-warning)) border-box;
+			background-size: 200% auto;
+			mask: 
+				linear-gradient(#fff 0 0) padding-box, 
+				linear-gradient(#fff 0 0);
+			mask-composite: exclude;
+			transition: background-position 0.5s ease;
+		}
+
+		&:hover::before {
+			background-position: 100% 0;
+		}
+	}
+	
 }
 
-button:hover {
+.button:hover {
 	background-position: 100% 0;
+}
+
+.button--success {
+	background: linear-gradient(to right, var(--color-success), var(--color-success) , #ddda0e);
+	background-size: 300% 100%;
 }

@@ -19,6 +19,7 @@
     "dayjs": "^1.11.13",
     "js-cookie": "^3.0.5",
     "lodash.debounce": "^4.0.8",
+    "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/js-cookie": "^3.0.6",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
