@@ -13,13 +13,13 @@ export function Home() {
 						<h1 className='md:pt-5 mb-5'>Онлайн квизы!</h1>
 						<hr className='mb-5 w-full'/>
 						<p className='mb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at tristique felis. </p>
-						<Button className='md:block hidden w-full'>Начнём!</Button>
+						<Button className='md:!flex !hidden w-full'>Начнём!</Button>
 					</div>
 					<div className="md:pl-0 md:pb-5 md:w-full md:border-l-transparent md:border-b pl-6 border-l">
 						<h3>Учись весело!</h3>
 					</div>
 				</div>
-				<Button className='md:hidden w-1/2'>Начнём!</Button>
+				<Button className='md:!hidden w-1/2'>Начнём!</Button>
 			</div>
 			<div className="md:relative md:bottom-40 flex justify-center w-full z-0">
 				<img src={'/globe.png'} alt="" className='lg:!w-[550px] lg:-translate-y-1/4 md:!w-[450px] md:-translate-y-1/3 md:left-1/5 relative bottom-4 z-10'/>
