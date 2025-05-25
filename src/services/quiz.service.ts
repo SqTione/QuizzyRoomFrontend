@@ -33,6 +33,18 @@ class QuizService {
 		const response = await axiosWithAuth.post<TypeQuizResponse>(`${this.BASE_URL}`, data)
 		return response.data
 	}
+
+	// Updating Quiz
+	async updateQuiz(data: IQuizForm) {
+		const response = await axiosWithAuth.put<TypeQuizResponse>(`${this.BASE_URL}`, data)
+		return response.data
+	}
+
+	// Deleting Quiz
+	async deleteQuiz(quizId: string) {
+		const response = await axiosWithAuth.delete<TypeQuizResponse>(`${this.BASE_URL}/${quizId}`)
+		return response.data
+	}
 }
 
 export const quizService = new QuizService()

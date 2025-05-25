@@ -2,13 +2,17 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
+import { UseDeleteQuiz } from '@/hooks/useDeleteQuiz'
 import { UseProfilePageData } from '@/hooks/useProfilePageData'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Trash } from 'lucide-react'
 import { useState } from 'react'
 import './profile.scss'
 
 export function Profile() {
 	const [activeTab, setActiveTab] = useState<'my' | 'favorites'>('my')
+	
+	const { mutate: deleteQuizMutate, isPending: isDeleting } = UseDeleteQuiz()
 
 	const {
 		profile,
@@ -100,11 +104,22 @@ export function Profile() {
 												<h3 className='mb-3'>{quiz.name}</h3>
 												<div className='flex justify-between gap-5'>
 													<p className='quiz__description'>{quiz.description}</p>
-													<div className='flex flex-col gap-2'>
-														<Button className='button--capsule button--success w-max'>
+													<div className='flex flex-col gap-2 w-15'>
+														<Button className='button--capsule button--success w-full'>
 																<img src="/icons/play.svg" alt="" />
 														</Button>
 														<FavoriteButton quizId={quiz.id} />
+														<Button
+															className='button--capsule button--danger w-full'
+															onClick={() => {
+																if (confirm('Вы уверены, что хотите удалить квиз?')) {
+																	deleteQuizMutate(quiz.id)
+																}
+															}}
+															disabled={isDeleting}
+														>
+															<Trash size={14}></Trash>
+														</Button>
 													</div>
 												</div>
 												<hr className='mt-5 border-gray-500'/>
