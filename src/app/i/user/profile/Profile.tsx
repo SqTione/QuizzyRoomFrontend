@@ -5,7 +5,7 @@ import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { UseDeleteQuiz } from '@/hooks/useDeleteQuiz'
 import { UseProfilePageData } from '@/hooks/useProfilePageData'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Trash } from 'lucide-react'
+import { Pencil, Trash } from 'lucide-react'
 import { useState } from 'react'
 import './profile.scss'
 
@@ -109,6 +109,11 @@ export function Profile() {
 																<img src="/icons/play.svg" alt="" />
 														</Button>
 														<FavoriteButton quizId={quiz.id} />
+														<Button 
+															href={`${DASHBOARD_PAGES.QUIZZES}/${quiz.id}/edit`}
+															className='button--capsule button--warning'>
+															<Pencil size={14} />
+														</Button>
 														<Button
 															className='button--capsule button--danger w-full'
 															onClick={() => {

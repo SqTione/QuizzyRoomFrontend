@@ -35,8 +35,8 @@ class QuizService {
 	}
 
 	// Updating Quiz
-	async updateQuiz(data: IQuizForm) {
-		const response = await axiosWithAuth.put<TypeQuizResponse>(`${this.BASE_URL}`, data)
+	async updateQuiz(data: IQuizForm, quizId: string) {
+		const response = await axiosWithAuth.put<TypeQuizResponse>(`${this.BASE_URL}/${quizId}`, data)
 		return response.data
 	}
 
