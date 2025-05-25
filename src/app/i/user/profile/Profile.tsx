@@ -1,6 +1,7 @@
 'use client'
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { UseProfilePageData } from '@/hooks/useProfilePageData'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
@@ -46,7 +47,7 @@ export function Profile() {
 					</div>
 				</div>
 				<div className='grid grid-cols-2 gap-3'>
-					<button>Создать квиз</button>
+					<Button href={DASHBOARD_PAGES.CREATE_QUIZ}>Создать квиз</Button>
 					<button>Редактировать профиль</button>
 				</div>
 			</main>

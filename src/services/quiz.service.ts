@@ -1,5 +1,5 @@
 import { axiosWithAuth } from '@/api/interceptors'
-import { TypeUserFavoriteQuizzesResponse, TypeUserQuizzesResponse } from '@/types/quiz.types'
+import { IQuizForm, TypeQuizResponse, TypeUserFavoriteQuizzesResponse, TypeUserQuizzesResponse } from '@/types/quiz.types'
 
 class QuizService {
 	private BASE_URL = '/quizzes'
@@ -25,6 +25,12 @@ class QuizService {
 	// Removing quiz from favorites
 	async removeFromFavorites(quizId: string) {
 		const response = await axiosWithAuth.delete<TypeUserFavoriteQuizzesResponse>(`${this.BASE_URL}/favorite/${quizId}`)
+		return response.data
+	}
+
+	// Creating Quiz
+	async createQuiz(data: IQuizForm) {
+		const response = await axiosWithAuth.post<TypeQuizResponse>(`${this.BASE_URL}`, data)
 		return response.data
 	}
 }
