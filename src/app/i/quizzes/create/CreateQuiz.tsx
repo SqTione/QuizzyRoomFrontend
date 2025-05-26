@@ -23,8 +23,10 @@ export function CreateQuiz() {
 		mutationKey: ['create-quiz'],
 		mutationFn: (data:IQuizForm) => quizService.createQuiz(data),
 		onSuccess(response) {
-			// Show success toats
+			// Show success toast
 			toast.success('Квиз успешно создан')
+
+			// Resetting form
 			reset()
 
 			// Redirect to created quiz page
