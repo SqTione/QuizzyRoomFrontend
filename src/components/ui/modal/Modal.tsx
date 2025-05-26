@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { Cross } from 'lucide-react'
+import { X } from 'lucide-react'
 import { PropsWithChildren, useEffect } from 'react'
 
 interface ModalProps {
@@ -51,7 +51,7 @@ export function Modal({isOpen, onClose, children}: PropsWithChildren<ModalProps>
                 className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-xl"
                 onClick={onClose}
               >
-                <Cross />
+                <X color='black' />
               </button>
             </div>
 					</motion.div>
