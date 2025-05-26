@@ -21,7 +21,7 @@ export function QuizQuestions() {
 					<p className='mt-5'>Создавайте и редактируйте вопросы в вашем квизе</p>
 					<Button 
 						className='md:w-max mt-5 w-full'
-						onClick={() => {setIsCreateModalOpen}}>Создать вопрос</Button>
+						onClick={() => {setIsCreateModalOpen(true)}}>Создать вопрос</Button>
 				</div>
 				<div className="quiz__questions flex flex-col gap-5 mt-6">
 					{ data?.questions?.length === 0 && (
