@@ -13,8 +13,8 @@ export function QuizQuestions() {
 
 	return (
 		<>
-			<div className='mt-15'>
-				<div className="w-full">
+			<div className='my-15 w-full'>
+				<div className="lg:w-1/2 w-full">
 					<hr />
 					<h2 className='my-5'>Вопросы</h2>
 					<hr />
@@ -23,7 +23,7 @@ export function QuizQuestions() {
 						className='md:w-max mt-5 w-full'
 						onClick={() => {setIsCreateModalOpen(true)}}>Создать вопрос</Button>
 				</div>
-				<div className="quiz__questions flex flex-col gap-5 mt-6">
+				<div className="quiz__questions xl:grid-cols-2 grid grid-cols-1 gap-5 mt-6 w-full">
 					{ data?.questions?.length === 0 && (
 						<p className='mx-auto w-1/2 text-center'>В этом квизе пока нет вопросов, но вы можете создать новый прямо сейчас.</p>
 					)}

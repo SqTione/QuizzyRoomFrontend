@@ -53,7 +53,7 @@ export function EditQuiz() {
 		<>
 			<main className="container flex flex-col mt-8 w-full">
 				<div className='relative w-full z-20'>
-					<div className='md:w-full mb-5'>
+					<div className='lg:w-1/2 w-full mb-5'>
 						<GoBackButton />
 						<hr className='my-5' />
 						<h1 className='mb-5'>Редактирование квиза</h1>
@@ -62,7 +62,10 @@ export function EditQuiz() {
 					<p>На этой странице вы можете настроить ваш квиз.</p>
 
 					{/* Edit quiz form */}
-					<form action="" onSubmit={handleSubmit(onSubmit)} className='w-full'>
+					<form 
+						action="" 
+						onSubmit={handleSubmit(onSubmit)} 
+						className='lg:w-2/3 w-full'>
 						<div className="form__body">
 							<Field
 								id='name'
@@ -88,11 +91,11 @@ export function EditQuiz() {
 					{/* Quiz questions list */}
 					<QuizQuestions />
 				</div>
-				<div id='main-bottom'>
+				{/* <div id='main-bottom'>
 					<div className="image-block">
 						<img src="/notebook.png" alt="" className=''/>
 					</div>
-				</div>
+				</div> */}
 			</main>
 		</>
 	)

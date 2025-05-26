@@ -26,9 +26,9 @@ export function Question({question}: TypeQuestionProps) {
 	return (
 		<>
 			<div className="question md:flex-row flex flex-col gap-5">
-				<div className="question__image xl:w-1/5 lg:w-1/4 md:aspect-square md:w-1/3 relative w-full h-auto aspect-video bg-gray-300 rounded-xl">
+				<div className="question__image xl:w-1/2 md:aspect-square md:w-1/3 relative w-full h-full aspect-square bg-gray-300 rounded-xl">
 					{question.imagePath && (
-						<img src={`http://localhost:3001/${question.imagePath}`} alt="" className='w-fit h-fit rounded-xl'/>
+						<img src={`http://localhost:3001/${question.imagePath}`} alt="" className='w-full rounded-xl'/>
 					)}
 					
 					<div className='absolute top-2 right-2 flex flex-col gap-1'>
@@ -50,8 +50,8 @@ export function Question({question}: TypeQuestionProps) {
 						</Button>
 					</div>
 				</div>
-				<div className="question__body flex justify-between gap-5">
-					<div className='flex flex-col gap-3'>
+				<div className="question__body flex justify-between w-full gap-5">
+					<div className='flex flex-col gap-3 w-full'>
 						<h3>{question.name}</h3>
 						<hr className='w-full' />
 					</div>
