@@ -25,7 +25,7 @@ export function QuizQuestions() {
 				</div>
 				<div className="quiz__questions flex flex-col gap-5 mt-6">
 					{ data?.questions?.length === 0 && (
-						<p>В этом квизе пока нет вопросов, но вы можете создать новый прямо сейчас.</p>
+						<p className='mx-auto w-1/2 text-center'>В этом квизе пока нет вопросов, но вы можете создать новый прямо сейчас.</p>
 					)}
 
 					{ data?.questions?.map(question => (

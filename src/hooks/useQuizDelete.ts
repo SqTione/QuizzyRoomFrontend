@@ -2,7 +2,7 @@ import { quizService } from '@/services/quiz.service'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
-export function UseDeleteQuiz() {
+export function UseQuizDelete() {
 	const queryClient = useQueryClient()
 
 	const {mutate: deleteQuizMutate, isPending: isDeleting} = useMutation({

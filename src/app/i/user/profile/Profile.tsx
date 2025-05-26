@@ -2,8 +2,8 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
-import { UseDeleteQuiz } from '@/hooks/useDeleteQuiz'
 import { UseProfilePageData } from '@/hooks/useProfilePageData'
+import { UseQuizDelete } from '@/hooks/useQuizDelete'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Pencil, Trash } from 'lucide-react'
 import { useState } from 'react'
@@ -12,7 +12,7 @@ import './profile.scss'
 export function Profile() {
 	const [activeTab, setActiveTab] = useState<'my' | 'favorites'>('my')
 	
-	const { mutate: deleteQuizMutate, isPending: isDeleting } = UseDeleteQuiz()
+	const { mutate: deleteQuizMutate, isPending: isDeleting } = UseQuizDelete()
 
 	const {
 		profile,
