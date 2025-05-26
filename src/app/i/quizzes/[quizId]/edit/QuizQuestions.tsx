@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/buttons/Button'
 import { UseQuizQuestions } from '@/hooks/useQuizQuestions'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { CreateQuestionModal } from './CreateQuestionModal'
 import { Question } from './Question'
@@ -27,10 +28,20 @@ export function QuizQuestions() {
 					{ data?.questions?.length === 0 && (
 						<p className='mx-auto w-1/2 text-center'>В этом квизе пока нет вопросов, но вы можете создать новый прямо сейчас.</p>
 					)}
-
-					{ data?.questions?.map(question => (
-						<Question key={question.id} question={question} />
-					))}
+					
+					<AnimatePresence mode='wait'>
+						{ data?.questions?.map(question => (
+							<motion.div
+								key={question.id}
+								initial={{opacity: 0, y: 10}}
+								animate={{opacity: 1, y: 0}}
+								exit={{opacity: 0, y: 10}}
+								transition={{duration: 0.2}}
+							>
+								<Question key={question.id} question={question} />
+							</motion.div>
+						))}
+					</AnimatePresence>
 					
 				</div>
 			</div>
