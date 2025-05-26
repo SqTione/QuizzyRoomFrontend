@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/buttons/Button'
+import { UseQuestionAnswers } from '@/hooks/useQuestionAnswers'
 import { UseQuestionDelete } from '@/hooks/useQuestionDelete'
 import { Edit, Trash } from 'lucide-react'
 import { useParams } from 'next/navigation'
@@ -22,6 +23,9 @@ export function Question({question}: TypeQuestionProps) {
 	// Getting quiz id from query params
 	const params = useParams()
 	const quizId = params.quizId as string
+
+	// Getting answers
+	const {data, isLoading} = UseQuestionAnswers(quizId, question.id)
 
 	return (
 		<>
@@ -54,6 +58,23 @@ export function Question({question}: TypeQuestionProps) {
 					<div className='flex flex-col gap-3 w-full'>
 						<h3>{question.name}</h3>
 						<hr className='w-full' />
+						<div className='flex items-center w-full h-full'>
+							{data?.answers?.length === 0 ? (
+								<p className='self-start mt-5 mx-auto text-center'>На этот вопрос нет ответов. Пора исправить это.</p>
+							): (
+								<div className='md:grid-cols-2 grid grid-cols-1 gap-3 mt-5 w-full h-full'>
+								{data?.answers?.map(answer => (
+									<div 
+										className={`question__answer px-2 py-1 w-full h-max font-bold text-center text-white bg-danger rounded-sm ${answer.isCorrect && 'text-white border-none bg-success'}`}
+									>
+										{answer?.name}
+									</div>
+							))}
+							</div>
+							)}
+
+							
+						</div>
 					</div>
 				</div>
 			</div>

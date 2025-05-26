@@ -1,5 +1,5 @@
 import { axiosWithAuth } from '@/api/interceptors'
-import { IQuestionForm, TypeQuestionResponse, TypeQuestionsResponse } from '@/types/quetion.types'
+import { IQuestionForm, TypeQuestionResponse, TypeQuestionsResponse } from '@/types/question.types'
 
 class QuestionService {
 	private BASE_URL = '/quizzes'

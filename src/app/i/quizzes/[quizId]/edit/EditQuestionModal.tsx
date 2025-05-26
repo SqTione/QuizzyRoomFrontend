@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import { Modal } from '@/components/ui/modal/Modal'
-import { IQuestion, IQuestionForm } from '@/types/quetion.types'
+import { IQuestion, IQuestionForm } from '@/types/question.types'
 import { useForm } from 'react-hook-form'
 
 interface EditQuestionModalProps {
