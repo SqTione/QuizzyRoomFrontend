@@ -12,7 +12,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useParams, useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { QuizQuestions } from './QuizQuestions'
+import { QuizQuestions } from './components/QuizQuestions'
 
 export function EditQuiz() {
 	const params = useParams()

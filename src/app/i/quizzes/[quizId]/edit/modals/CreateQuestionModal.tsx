@@ -25,7 +25,7 @@ export function CreateQuestionModal({
 	const params = useParams()
 	const quizId = params.quizId as string
 
-	const {register, handleSubmit, reset, setValue, watch} = useForm<IQuestionForm>({
+	const {register, handleSubmit, reset, setValue} = useForm<IQuestionForm>({
 		mode: 'onChange'
 	})
 
@@ -78,7 +78,7 @@ export function CreateQuestionModal({
 		<Modal isOpen={isOpen} onClose={onClose}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form__header flex flex-col gap-5 mb-8 w-full">
-					<h2>Создание квиза</h2>
+					<h2>Создание вопроса</h2>
 					<hr />
 				</div>
 				<div className="form__body">
@@ -99,8 +99,15 @@ export function CreateQuestionModal({
 							required: '"Вопрос" является обязательным полем'
 						})} 
 					/>
+
+					<div className='flex flex-col gap-5 mt-8'>
+						<h3>Варианты ответов</h3>
+						<hr />
+						<Button className='button--bordered w-max'>Добавить ответ</Button>
+					</div>
+
 				</div>
-				<div className="form__footer">
+				<div className="form__footer mt-5">
 					<Button className="button--success" type="submit">Создать</Button>
 				</div>
 			</form>

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/buttons/Button'
 import { UseQuizQuestions } from '@/hooks/useQuizQuestions'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
-import { CreateQuestionModal } from './CreateQuestionModal'
+import { CreateQuestionModal } from '../modals/CreateQuestionModal'
 import { Question } from './Question'
 
 
