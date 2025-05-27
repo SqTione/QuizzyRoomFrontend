@@ -58,7 +58,7 @@ export function EditQuestionModal({
 	const onSubmit: SubmitHandler<IQuestionForm> = async (data) => {
 		await updateQuestion(data, quizId, questionId)
 
-		// Updating all answers
+		// Updating all answers or creating new answers
 		await Promise.all(
 			answers.map(answer =>
 				answer.id
