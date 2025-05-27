@@ -1,78 +1,139 @@
+'use client'
+
 import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
+import { FileField } from '@/components/ui/fields/FileField'
 import { Modal } from '@/components/ui/modal/Modal'
-import { IQuestion, IQuestionForm } from '@/types/question.types'
-import { useForm } from 'react-hook-form'
+import { UseAnswerDelete } from '@/hooks/useAnswerDelete'
+import { UseAnswerUpdate } from '@/hooks/useAnswerUpdate'
+import { UseQuestionUpdate } from '@/hooks/useQuestionUpdate'
+import { IAnswerField } from '@/types/answer.types'
+import { IQuestionForm } from '@/types/question.types'
+import { useParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { QuestionAnswers } from '../components/QuestionAnswers'
 
-interface EditQuestionModalProps {
-  isOpen: boolean
-  onClose: () => void
-  defaultValues?: IQuestion
-  onSave: (values: IQuestionForm) => void
+type EditQuestionModalProps = {
+	isOpen: boolean
+	onClose: () => void
+	questionId: string
+	initialData: IQuestionForm
+	initialAnswers: IAnswerField[]
 }
 
-export const EditQuestionModal = ({
-  isOpen,
-  onClose,
-  defaultValues,
-  onSave,
-}: EditQuestionModalProps) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IQuestionForm>({
-    defaultValues: {
-      name: defaultValues?.name || '',
-      imagePath: defaultValues?.imagePath || '',
-    },
-  })
+export function EditQuestionModal({
+	isOpen,
+	onClose,
+	questionId,
+	initialData,
+	initialAnswers
+}: EditQuestionModalProps) {
+	const [answers, setAnswers] = useState<IAnswerField[]>([])
 
-  const onSubmit = handleSubmit((data) => {
-    onSave(data)
-    onClose()
-  })
+	const {
+		register,
+		handleSubmit,
+		setValue,
+		reset,
+		formState: { isSubmitting }
+	} = useForm<IQuestionForm>({
+		defaultValues: initialData
+	})
 
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      {/* Preview image */}
-      <div className="w-full aspect-video bg-gray-200 rounded-xl overflow-hidden mb-4">
-        {defaultValues?.imagePath ? (
-          <img
-            src={defaultValues.imagePath}
-            alt="Question image"
-            className="object-cover w-full h-full"
-          />
-        ) : (
-          <div className="flex items-center justify-center h-full text-black/50 text-sm">
-            Нет изображения
-          </div>
-        )}
-      </div>
+	const { update: updateQuestion } = UseQuestionUpdate()
+	const { mutateAsync: updateAnswer } = UseAnswerUpdate()
+	const { mutateAsync: deleteAnswer } = UseAnswerDelete()
 
-      <form onSubmit={onSubmit} className="space-y-4">
-        <Field
-          id="name"
-          label="Название"
-          placeholder="Введите название вопроса"
-          state={errors.name ? 'error' : undefined}
-          {...register('name', { required: 'Введите название' })}
-        />
+  const params = useParams()
+  const quizId = params.quizId as string
 
-        <Field
-          id="imagePath"
-          label="Ссылка на изображение"
-          placeholder="https://..."
-          state={errors.imagePath ? 'error' : undefined}
-          {...register('imagePath')}
-        />
+	useEffect(() => {
+		reset(initialData)
+		setAnswers(initialAnswers)
+	}, [initialData, initialAnswers, reset])
 
-        <div className="flex justify-end gap-2 pt-2">
-          <Button type="submit">
-            Сохранить
-          </Button>
-        </div>
-      </form>
-    </Modal>
-  )
+	const onSubmit: SubmitHandler<IQuestionForm> = async (data) => {
+		await updateQuestion(data, quizId, questionId)
+
+		// Updating all answers
+		await Promise.all(
+			answers.map(answer =>
+				answer.id
+					? updateAnswer({quizId, questionId, answerId: answer.id, data: answer })
+					: Promise.resolve()
+			)
+		)
+
+		onClose()
+	}
+
+	const handleFileChange = (file: File | null) => {
+		if (file) {
+			setValue('imageFile', file, { shouldValidate: true })
+		}
+	}
+
+	const handleAddAnswer = (answer: IAnswerField) => {
+		setAnswers(prev => [...prev, answer])
+	}
+
+	const handleUpdateAnswer = (index: number, updated: IAnswerField) => {
+		setAnswers(prev => {
+			const copy = [...prev]
+			copy[index] = updated
+			return copy
+		})
+	}
+
+	const handleRemoveAnswer = async (index: number) => {
+		const answerToDelete = answers[index]
+		if (answerToDelete?.id) {
+			await deleteAnswer({quizId, questionId, answerId: answerToDelete.id })
+		}
+		setAnswers(prev => prev.filter((_, i) => i !== index))
+	}
+
+	return (
+		<Modal isOpen={isOpen} onClose={onClose}>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<div className="form__header flex flex-col gap-5 mb-8 w-full">
+					<h2>Редактирование вопроса</h2>
+					<hr />
+				</div>
+				<div className="form__body">
+					<FileField
+						id="questionImage"
+						label="Изображение вопроса"
+						accept="image/*"
+						placeholder="Перетащите или выберите изображение"
+						onFileChange={handleFileChange}
+					/>
+					<Field
+						id="name"
+						label="Вопрос:"
+						type="text"
+						extra="mb-4"
+						placeholder="Введите текст вопроса"
+						{...register('name', { required: 'Поле обязательно' })}
+					/>
+					<QuestionAnswers
+						answers={answers}
+						onAddAnswer={handleAddAnswer}
+						onUpdateAnswer={handleUpdateAnswer}
+						onRemoveAnswer={handleRemoveAnswer}
+					/>
+				</div>
+				<div className="form__footer mt-5">
+					<Button
+						className="button--success"
+						type="submit"
+						disabled={isSubmitting}
+					>
+						{isSubmitting ? 'Сохранение...' : 'Сохранить изменения'}
+					</Button>
+				</div>
+			</form>
+		</Modal>
+	)
 }

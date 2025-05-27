@@ -17,10 +17,16 @@ class AnswersService {
 	}
 
 	// Updating existing answer
-	async updateAnswer() {}
+	async updateAnswer(quizId: string, questionId: string, answerId: string,  data: IAnswerField) {
+		const response = await axiosWithAuth.put<TypeAnswerResponse>(`${this.BASE_URL}/${quizId}/questions/${questionId}/${answerId}`, data)
+		return response.data
+	}
 
 	// Deleting answer
-	async deleteAnswer() {}
+	async deleteAnswer(quizId: string, questionId: string, answerId: string) {
+		const response = await axiosWithAuth.delete<TypeAnswerResponse>(`${this.BASE_URL}/${quizId}/questions/${questionId}/${answerId}`)
+		return response.data
+	}
 }
 
 export const answersService = new AnswersService()

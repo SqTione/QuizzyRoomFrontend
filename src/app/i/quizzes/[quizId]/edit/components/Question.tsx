@@ -6,6 +6,7 @@ import { UseQuestionDelete } from '@/hooks/useQuestionDelete'
 import { Edit, Trash } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
+import { EditQuestionModal } from '../modals/EditQuestionModal'
 
 type TypeQuestionProps = {
 	question: {
@@ -64,7 +65,7 @@ export function Question({question}: TypeQuestionProps) {
 							): (
 								<div className='md:grid-cols-2 grid grid-cols-1 gap-3 mt-5 w-full h-full'>
 								{data?.answers?.map(answer => (
-									<div 
+									<div key={answer.id}
 										className={`question__answer px-2 py-1 w-full h-max font-bold text-center text-white bg-danger rounded-sm ${answer.isCorrect && 'text-white border-none bg-success'}`}
 									>
 										{answer?.name}
@@ -72,22 +73,28 @@ export function Question({question}: TypeQuestionProps) {
 							))}
 							</div>
 							)}
-
-							
 						</div>
 					</div>
 				</div>
 			</div>
 
 			{/* Modal for Editing Question */}
-			{/* <EditQuestionModal
-				isOpen={isOpen}
-				onClose={() => setIsOpen(false)}
-				defaultValues={question}
-				onSave={(values) => {
-					updateQuestion(selectedQuestion.id, values)
+			{data && (
+			<EditQuestionModal
+				isOpen={isEditModalOpen}
+				onClose={() => setIsEditModalOpen(false)}
+				questionId={question.id}
+				initialData={{
+					name: question.name,
+					imageFile: undefined
 				}}
-			/> */}
+				initialAnswers={data.answers.map(answer => ({
+					name: answer.name,
+					isCorrect: answer.isCorrect,
+					id: answer.id
+				}))}
+			/>
+		)}
 		</>
 	)
 }

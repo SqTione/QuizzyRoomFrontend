@@ -1,5 +1,5 @@
 import { axiosWithAuth } from '@/api/interceptors'
-import { IQuestionForm, TypeQuestionResponse, TypeQuestionsResponse } from '@/types/question.types'
+import { TypeQuestionResponse, TypeQuestionsResponse } from '@/types/question.types'
 
 class QuestionService {
 	private BASE_URL = '/quizzes'
@@ -12,17 +12,20 @@ class QuestionService {
 
 	// Creating question
 	async createQuestion(data: FormData, quizId: string) {
-  return axiosWithAuth.post(`/quizzes/${quizId}/questions`, data, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  })
-}
+		return axiosWithAuth.post<TypeQuestionResponse>(`/quizzes/${quizId}/questions`, data, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		})
+	}
 
 	// Updating question
-	async updateQuestion(data: IQuestionForm, quizId: string, questionId: string) {
-		const response = await axiosWithAuth.put<TypeQuestionResponse>(`${this.BASE_URL}/${quizId}/questions/${questionId}`, data)
-		return response.data
+	async updateQuestion(data: FormData, quizId: string, questionId: string) {
+		return axiosWithAuth.put<TypeQuestionResponse>(`/quizzes/${quizId}/questions/${questionId}`, data, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		})
 	}
 
 	// Deleting Question

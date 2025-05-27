@@ -17,6 +17,7 @@ export type TypeAnswersResponse = {
 }
 
 export interface IAnswerField {
+	id?: string
 	name: string
 	isCorrect: boolean
 }
