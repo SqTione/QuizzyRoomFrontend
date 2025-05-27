@@ -40,8 +40,8 @@ export default function RootLayout({
 							position='bottom-right'
 							duration={1500}
 						/>
-					<FooterGuest />
 				</div>
+				<FooterGuest />
 				</Providers>
 			</body>
 		</html>

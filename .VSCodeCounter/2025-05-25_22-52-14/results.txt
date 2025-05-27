@@ -1,0 +1,139 @@
+Date : 2025-05-25 22:52:14
+Directory : /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend
+Total : 71 files,  3583 codes, 65 comments, 708 blanks, all 4356 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| YAML               |          1 |      1,570 |          0 |        414 |      1,984 |
+| TypeScript JSX     |         28 |      1,203 |         25 |        123 |      1,351 |
+| TypeScript         |         25 |        414 |         38 |         93 |        545 |
+| PostCSS            |          1 |        131 |          2 |         28 |        161 |
+| SCSS               |          4 |        127 |          0 |         24 |        151 |
+| JSON               |          2 |         63 |          0 |          2 |         65 |
+| JSON with Comments |          1 |         27 |          0 |          1 |         28 |
+| Markdown           |          1 |         23 |          0 |         14 |         37 |
+| XML                |          7 |         21 |          0 |          7 |         28 |
+| JavaScript         |          1 |          4 |          0 |          2 |          6 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |         71 |      3,583 |         65 |        708 |      4,356 |
+| . (Files)                                                                                              |          7 |      1,691 |          0 |        437 |      2,128 |
+| public                                                                                                 |          7 |         21 |          0 |          7 |         28 |
+| public/icons                                                                                           |          7 |         21 |          0 |          7 |         28 |
+| src                                                                                                    |         57 |      1,871 |         65 |        264 |      2,200 |
+| src (Files)                                                                                            |          1 |         25 |          5 |          8 |         38 |
+| src/api                                                                                                |          2 |         50 |          3 |         11 |         64 |
+| src/app                                                                                                |         18 |        899 |         14 |        105 |      1,018 |
+| src/app (Files)                                                                                        |          6 |        272 |          5 |         44 |        321 |
+| src/app/auth                                                                                           |          4 |        214 |          2 |         20 |        236 |
+| src/app/auth/sign-in                                                                                   |          2 |         96 |          1 |         10 |        107 |
+| src/app/auth/sign-up                                                                                   |          2 |        118 |          1 |         10 |        129 |
+| src/app/i                                                                                              |          8 |        413 |          7 |         41 |        461 |
+| src/app/i/quizzes                                                                                      |          5 |        222 |          6 |         25 |        253 |
+| src/app/i/quizzes/[quizId]                                                                             |          3 |        132 |          2 |         16 |        150 |
+| src/app/i/quizzes/[quizId]/edit                                                                        |          3 |        132 |          2 |         16 |        150 |
+| src/app/i/quizzes/create                                                                               |          2 |         90 |          4 |          9 |        103 |
+| src/app/i/user                                                                                         |          3 |        191 |          1 |         16 |        208 |
+| src/app/i/user/profile                                                                                 |          3 |        191 |          1 |         16 |        208 |
+| src/components                                                                                         |         17 |        582 |         14 |         71 |        667 |
+| src/components/guest-layout                                                                            |          2 |         59 |          0 |          7 |         66 |
+| src/components/guest-layout/footer                                                                     |          1 |         44 |          0 |          3 |         47 |
+| src/components/guest-layout/header                                                                     |          1 |         15 |          0 |          4 |         19 |
+| src/components/logo                                                                                    |          1 |          5 |          0 |          0 |          5 |
+| src/components/menu                                                                                    |          5 |        118 |          8 |         16 |        142 |
+| src/components/ui                                                                                      |          9 |        400 |          6 |         48 |        454 |
+| src/components/ui/accordion                                                                            |          2 |         48 |          0 |         12 |         60 |
+| src/components/ui/buttons                                                                              |          4 |        153 |          1 |         21 |        175 |
+| src/components/ui/checkbox                                                                             |          1 |         59 |          3 |          6 |         68 |
+| src/components/ui/fields                                                                               |          2 |        140 |          2 |          9 |        151 |
+| src/config                                                                                             |          2 |         14 |          3 |          7 |         24 |
+| src/constants                                                                                          |          2 |         13 |          2 |          3 |         18 |
+| src/hooks                                                                                              |          6 |        103 |          5 |         19 |        127 |
+| src/services                                                                                           |          4 |        116 |         17 |         29 |        162 |
+| src/types                                                                                              |          4 |         39 |          0 |         10 |         49 |
+| src/utils                                                                                              |          1 |         30 |          2 |          1 |         33 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                               | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/.prettierrc                                        | JSON               |         16 |          0 |          1 |         17 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/README.md                                          | Markdown           |         23 |          0 |         14 |         37 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/next.config.ts                                     | TypeScript         |          4 |          0 |          4 |          8 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/package.json                                       | JSON               |         47 |          0 |          1 |         48 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/pnpm-lock.yaml                                     | YAML               |      1,570 |          0 |        414 |      1,984 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/postcss.config.mjs                                 | JavaScript         |          4 |          0 |          2 |          6 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/arrow_down.svg                        | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/cross.svg                             | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/email.svg                             | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/heart.svg                             | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/phone.svg                             | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/play.svg                              | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/public/icons/vk.svg                                | XML                |          3 |          0 |          1 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/api/error.ts                                   | TypeScript         |          8 |          0 |          1 |          9 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/api/interceptors.ts                            | TypeScript         |         42 |          3 |         10 |         55 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/Home.tsx                                   | TypeScript JSX     |         55 |          3 |          5 |         63 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/auth/sign-in/SignIn.tsx                    | TypeScript JSX     |         84 |          1 |          8 |         93 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/auth/sign-in/page.tsx                      | TypeScript JSX     |         12 |          0 |          2 |         14 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/auth/sign-up/SignUp.tsx                    | TypeScript JSX     |        106 |          1 |          8 |        115 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/auth/sign-up/page.tsx                      | TypeScript JSX     |         12 |          0 |          2 |         14 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/globals.css                                | PostCSS            |        131 |          2 |         28 |        161 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/quizzes/[quizId]/edit/EditQuiz.tsx       | TypeScript JSX     |         91 |          2 |         11 |        104 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/quizzes/[quizId]/edit/QuizQuestions.tsx  | TypeScript JSX     |         29 |          0 |          3 |         32 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/quizzes/[quizId]/edit/page.tsx           | TypeScript JSX     |         12 |          0 |          2 |         14 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/quizzes/create/CreateQuiz.tsx            | TypeScript JSX     |         78 |          4 |          7 |         89 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/quizzes/create/page.tsx                  | TypeScript JSX     |         12 |          0 |          2 |         14 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/user/profile/Profile.tsx                 | TypeScript JSX     |        158 |          1 |          9 |        168 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/user/profile/page.tsx                    | TypeScript JSX     |         12 |          0 |          2 |         14 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/i/user/profile/profile.scss                | SCSS               |         21 |          0 |          5 |         26 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/layout.tsx                                 | TypeScript JSX     |         46 |          0 |          4 |         50 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/not-found.tsx                              | TypeScript JSX     |         11 |          0 |          0 |         11 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/page.tsx                                   | TypeScript JSX     |          8 |          0 |          3 |         11 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/app/providers.tsx                              | TypeScript JSX     |         21 |          0 |          4 |         25 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/guest-layout/footer/FooterGuest.tsx | TypeScript JSX     |         44 |          0 |          3 |         47 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/guest-layout/header/HeaderGuest.tsx | TypeScript JSX     |         15 |          0 |          4 |         19 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/logo/Logo.tsx                       | TypeScript JSX     |          5 |          0 |          0 |          5 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/menu/Menu.tsx                       | TypeScript JSX     |         55 |          6 |         10 |         71 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/menu/MenuItem.tsx                   | TypeScript JSX     |         16 |          1 |          2 |         19 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/menu/menu-item.interface.ts         | TypeScript         |          4 |          0 |          0 |          4 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/menu/menu.data.ts                   | TypeScript         |         16 |          1 |          1 |         18 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/menu/menu.scss                      | SCSS               |         27 |          0 |          3 |         30 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/accordion/Accordion.tsx          | TypeScript JSX     |         26 |          0 |          5 |         31 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/accordion/style.scss             | SCSS               |         22 |          0 |          7 |         29 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/buttons/Button.tsx               | TypeScript JSX     |         40 |          0 |          6 |         46 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/buttons/FavoriteButton.tsx       | TypeScript JSX     |         28 |          1 |          3 |         32 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/buttons/GoBackButton.tsx         | TypeScript JSX     |         28 |          0 |          3 |         31 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/buttons/button.scss              | SCSS               |         57 |          0 |          9 |         66 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/checkbox/Checkbox.tsx            | TypeScript JSX     |         59 |          3 |          6 |         68 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/fields/Field.tsx                 | TypeScript JSX     |         85 |          2 |          6 |         93 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/components/ui/fields/Textarea.tsx              | TypeScript JSX     |         55 |          0 |          3 |         58 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/config/menu-data.config.ts                     | TypeScript         |          0 |          0 |          1 |          1 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/config/pages-url.config.ts                     | TypeScript         |         14 |          3 |          6 |         23 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/constants/color.constants.ts                   | TypeScript         |         11 |          2 |          2 |         15 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/constants/seo.constants.ts                     | TypeScript         |          2 |          0 |          1 |          3 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/hooks/useDeleteQuiz.ts                         | TypeScript         |         22 |          2 |          4 |         28 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/hooks/useFavorite.ts                           | TypeScript         |         40 |          2 |          7 |         49 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/hooks/useProfile.ts                            | TypeScript         |          9 |          0 |          2 |         11 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/hooks/useProfilePageData.ts                    | TypeScript         |         14 |          1 |          2 |         17 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/hooks/useUserFavoriteQuizzes.ts                | TypeScript         |          9 |          0 |          2 |         11 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/hooks/useUserQuizzes.ts                        | TypeScript         |          9 |          0 |          2 |         11 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/middleware.ts                                  | TypeScript         |         25 |          5 |          8 |         38 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/services/auth-token.service.ts                 | TypeScript         |         16 |          3 |          3 |         22 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/services/auth.service.ts                       | TypeScript         |         32 |          4 |         11 |         47 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/services/quiz.service.ts                       | TypeScript         |         34 |          7 |          9 |         50 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/services/user.service.ts                       | TypeScript         |         34 |          3 |          6 |         43 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/types/auth.types.ts                            | TypeScript         |         14 |          0 |          4 |         18 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/types/quiz.types.ts                            | TypeScript         |         13 |          0 |          2 |         15 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/types/token.types.ts                           | TypeScript         |          4 |          0 |          1 |          5 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/types/user.types.ts                            | TypeScript         |          8 |          0 |          3 |         11 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/src/utils/translate-error.ts                       | TypeScript         |         30 |          2 |          1 |         33 |
+| /home/sqtione/Study/QuizeeRoom/quizzy-room-frontend/tsconfig.json                                      | JSON with Comments |         27 |          0 |          1 |         28 |
+| Total                                                                                                  |                    |      3,583 |         65 |        708 |      4,356 |
++--------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

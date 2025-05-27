@@ -1,10 +1,10 @@
 import { quizService } from '@/services/quiz.service'
-import { QueryClient, useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { useUserFavoriteQuizzes } from './useUserFavoriteQuizzes'
 
 export function UseFavorite() {
-	const queryClient = new QueryClient()
+	const queryClient = useQueryClient()
 
 	const { data: favorite } = useUserFavoriteQuizzes()
 
@@ -14,10 +14,11 @@ export function UseFavorite() {
 
 	// Mutation for adding quiz to favorites
 	const addFavorite = useMutation({
-		mutationKey: ['auth'],
+		mutationKey: ['make-quiz-favorite'],
 		mutationFn: (quizId: string) => quizService.addToFavorites(quizId),
 		onSuccess() {
-			queryClient.invalidateQueries({ queryKey: ['favorites'] });
+			queryClient.invalidateQueries({ queryKey: ['user-favorite-quizzes'] });
+			queryClient.invalidateQueries({ queryKey: ['user-quizzes'] });
 			toast.success('Квиз добавлен в избранное')
 		},
 		onError() {
@@ -27,11 +28,11 @@ export function UseFavorite() {
 
 	// Mutation for removing quiz from favorites
 	const removeFavorite = useMutation({
-		mutationKey: ['auth'],
+		mutationKey: ['delete-quiz-from-favorites'],
 		mutationFn: (quizId: string) => quizService.removeFromFavorites(quizId),
 		onSuccess() {
-			queryClient.invalidateQueries({ queryKey: ['quizzes'] })
-			queryClient.invalidateQueries({ queryKey: ['favorites'] });
+			queryClient.invalidateQueries({ queryKey: ['user-favorite-quizzes'] });
+			queryClient.invalidateQueries({ queryKey: ['user-quizzes'] });
 			toast.success('Квиз удален из избранного')
 		},
 		onError() {

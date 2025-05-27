@@ -79,7 +79,7 @@ export function SignIn() {
 					<Checkbox id='remember' label='Запомнить меня' />
 				</div>
 				<div className="form__footer flex flex-col gap-3 mt-8">
-					<Button className='button--success'>Войти</Button>
+					<Button type='submit' className='button--success'>Войти</Button>
 					<Button className='button--bordered' href={GUEST_PAGES.SIGN_UP}>К регистрации</Button>
 				</div>
 			</form>

@@ -20,6 +20,11 @@ export async function middleware(
 		return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, url))
 	}
 
+	// Allow unauthenticated user access to auth pages
+	if (isAuthPage) {
+		return NextResponse.next()
+	}
+
 	// Redirect unauthenticated user when trying to access protected pages
 	if (!refreshToken) {
 		return NextResponse.redirect(new URL(GUEST_PAGES.SIGN_IN, request.url))

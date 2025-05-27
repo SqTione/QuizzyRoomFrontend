@@ -4,6 +4,8 @@ class DASHBOARD {
 
 	// TODO: Add pages for authenticated user
 	HOME = `${this.root}/user/profile`
+	QUIZZES = `${this.root}/quizzes`
+	CREATE_QUIZ=`${this.root}/quizzes/create`
 }
 
 export const DASHBOARD_PAGES = new DASHBOARD()
