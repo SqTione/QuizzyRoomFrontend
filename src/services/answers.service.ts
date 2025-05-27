@@ -1,5 +1,5 @@
 import { axiosWithAuth } from '@/api/interceptors'
-import { TypeAnswersResponse } from '@/types/answer.types'
+import { IAnswerField, TypeAnswerResponse, TypeAnswersResponse } from '@/types/answer.types'
 
 class AnswersService {
 	private BASE_URL = '/quizzes' 
@@ -11,7 +11,10 @@ class AnswersService {
 	}
 
 	// Creating new answer
-	async createAnswer() {}
+	async createAnswer(quizId: string, questionId: string, data: IAnswerField) {
+		const response = await axiosWithAuth.post<TypeAnswerResponse>(`${this.BASE_URL}/${quizId}/questions/${questionId}`, data)
+		return response.data
+	}
 
 	// Updating existing answer
 	async updateAnswer() {}

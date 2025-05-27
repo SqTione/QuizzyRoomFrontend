@@ -4,16 +4,17 @@ import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import { FileField } from '@/components/ui/fields/FileField'
 import { Modal } from '@/components/ui/modal/Modal'
-import { questionService } from '@/services/question.service'
+import { UseAnswerCreate } from '@/hooks/useAnswerCreate'
+import { UseQuestionCreate } from '@/hooks/useQuestionCreate'
+import { IAnswerField } from '@/types/answer.types'
 import { IQuestionForm } from '@/types/question.types'
-import { translateErrorMessage } from '@/utils/translate-error'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useParams } from 'next/navigation'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { toast } from 'sonner'
+import { useState } from 'react'
+import { SubmitHandler } from 'react-hook-form'
+import { QuestionAnswers } from '../components/QuestionAnswers'
 
 type TypesCreateQuestionModal = {
-	isOpen: boolean,
+	isOpen: boolean
 	onClose: () => void
 }
 
@@ -21,57 +22,78 @@ export function CreateQuestionModal({
 	isOpen,
 	onClose
 }: TypesCreateQuestionModal) {
-	// Getting quiz id from query params
 	const params = useParams()
 	const quizId = params.quizId as string
 
-	const {register, handleSubmit, reset, setValue} = useForm<IQuestionForm>({
-		mode: 'onChange'
+	const [answers, setAnswers] = useState<IAnswerField[]>([])
+
+	const {
+		register,
+		handleSubmit,
+		setValue,
+		mutateAsync: createQuestionAsync,
+		isPending: isCreatingQuestion
+	} = UseQuestionCreate(async (question) => {
+		if (!question?.id) return
+
+		// Sending of all answers
+		await Promise.all(
+			answers.map(answer =>
+				createAnswer({
+					quizId,
+					questionId: question?.id,
+					data: answer
+				})
+			)
+		)
+
+		// Set answers and close popup
+		setAnswers([])
+		onClose()
 	})
 
-	const queryClient = useQueryClient()
+	const { mutate: createAnswer } = UseAnswerCreate()
 
-	const {mutate} = useMutation({
-		mutationKey: ['create-question'],
-		mutationFn: (data: IQuestionForm) => {
-			const formData = new FormData()
-			formData.append('name', data.name)
+	const onSubmit: SubmitHandler<IQuestionForm> = async (data) => {
+		const createdQuestionResponse = await createQuestionAsync({ data, quizId })
+		const createdQuestion = createdQuestionResponse.data
 
-			if (data.imageFile) {
-				formData.append('image', data.imageFile)
-		  }
+		if (!createdQuestion?.id) return
 
-  		return questionService.createQuestion(formData, quizId)
-		},
-		onSuccess() {
-			// Show success toast
-			toast.success('Вопрос успешно создан')
+		await Promise.all(
+			answers.map(answer =>
+				createAnswer({
+					quizId,
+					questionId: createdQuestion.id,
+					data: answer,
+				})
+			)
+		)
 
-			// Resetting form
-			reset()
-
-			// Closing popup and updating questions list
-			queryClient.invalidateQueries({ queryKey: ['get-questions'] })
-		},
-		onError(error: any) {
-			// Translating server error to Russian language
-			const serverMessage = error?.response?.data?.message
-				const message = typeof serverMessage === 'string'
-					? translateErrorMessage(serverMessage)
-					: 'Произошла ошибка при создании вопроса'
-			
-			toast.error(message);
-		}
-	})
-
-	const onSubmit:SubmitHandler<IQuestionForm> = data => {
-		mutate(data)
+		setAnswers([])
+		onClose()
 	}
-	
+
 	const handleFileChange = (file: File | null) => {
 		if (file) {
 			setValue('imageFile', file, { shouldValidate: true })
 		}
+	}
+
+	const handleAddAnswer = (answer: IAnswerField) => {
+		setAnswers(prev => [...prev, answer])
+	}
+
+	const handleUpdateAnswer = (index: number, updated: IAnswerField) => {
+		setAnswers(prev => {
+			const copy = [...prev]
+			copy[index] = updated
+			return copy
+		})
+	}
+
+	const handleRemoveAnswer = (index: number) => {
+		setAnswers(prev => prev.filter((_, i) => i !== index))
 	}
 
 	return (
@@ -85,30 +107,35 @@ export function CreateQuestionModal({
 					<FileField
 						id="questionImage"
 						label="Изображение вопроса"
-						placeholder='Перетащите или выберите изображение для вопроса'
+						placeholder="Перетащите или выберите изображение для вопроса"
 						accept="image/*"
 						onFileChange={handleFileChange}
 					/>
 					<Field
-						id='name'
-						label='Вопрос:'
-						placeholder='Вопрос'
-						type='text'
-						extra='mb-4'
+						id="name"
+						label="Вопрос:"
+						placeholder="Вопрос"
+						type="text"
+						extra="mb-4"
 						{...register('name', {
-							required: '"Вопрос" является обязательным полем'
-						})} 
+							required: '"Вопрос" является обязательным полем',
+						})}
 					/>
-
-					<div className='flex flex-col gap-5 mt-8'>
-						<h3>Варианты ответов</h3>
-						<hr />
-						<Button className='button--bordered w-max'>Добавить ответ</Button>
-					</div>
-
+					<QuestionAnswers
+						answers={answers}
+						onAddAnswer={handleAddAnswer}
+						onUpdateAnswer={handleUpdateAnswer}
+						onRemoveAnswer={handleRemoveAnswer}
+					/>
 				</div>
 				<div className="form__footer mt-5">
-					<Button className="button--success" type="submit">Создать</Button>
+					<Button
+						className="button--success"
+						type="submit"
+						disabled={isCreatingQuestion}
+					>
+						{isCreatingQuestion ? 'Создание...' : 'Создать'}
+					</Button>
 				</div>
 			</form>
 		</Modal>

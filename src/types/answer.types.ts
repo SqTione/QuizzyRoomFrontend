@@ -15,3 +15,8 @@ export type TypeAnswersResponse = {
 		questionId: string
 	}[]
 }
+
+export interface IAnswerField {
+	name: string
+	isCorrect: boolean
+}

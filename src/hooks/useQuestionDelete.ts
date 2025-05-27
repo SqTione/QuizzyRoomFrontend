@@ -14,7 +14,7 @@ export function UseQuestionDelete() {
 			// Show success toast
 			toast.success('Вопрос успешно удалён')
 
-			// Updating quiz list
+			// Updating questions list
 			queryClient.invalidateQueries({ queryKey: ['get-questions'] })
 		},
 		onError() {
