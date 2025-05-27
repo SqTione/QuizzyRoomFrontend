@@ -105,7 +105,9 @@ export function Profile() {
 												<div className='flex justify-between gap-5'>
 													<p className='quiz__description'>{quiz.description}</p>
 													<div className='flex flex-col gap-2 w-15'>
-														<Button className='button--capsule button--success w-full'>
+														<Button 
+															className='button--capsule button--success w-full'
+															href={`${DASHBOARD_PAGES.QUIZZES}/${quiz.id}`}>
 																<img src="/icons/play.svg" alt="" />
 														</Button>
 														<FavoriteButton quizId={quiz.id} />
