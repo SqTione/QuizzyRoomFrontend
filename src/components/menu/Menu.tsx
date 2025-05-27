@@ -1,8 +1,7 @@
 'use client'
 
-import { DASHBOARD_MENU } from '@/config/menu-data.config'
+import { DASHBOARD_MENU, GUEST_MENU } from '@/config/menu-data.config'
 import { useEffect, useRef, useState } from 'react'
-import { GUEST_MENU } from './menu.data'
 import './menu.scss'
 import { MenuItem } from './MenuItem'
 
