@@ -52,7 +52,6 @@ export function Profile() {
 				</div>
 				<div className='grid grid-cols-2 gap-3'>
 					<Button href={DASHBOARD_PAGES.CREATE_QUIZ}>Создать квиз</Button>
-					<button>Редактировать профиль</button>
 				</div>
 			</main>
 
