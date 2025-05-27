@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/buttons/Button'
+import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { GoBackButton } from '@/components/ui/buttons/GoBackButton'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { UseQuizForGame } from '@/hooks/useQuizForGame'
@@ -32,8 +33,8 @@ export function Quiz() {
           <Button onClick={handleStartGame}>Начать</Button>
         </div>
         <div className='flex flex-col pl-5 border-l'>
-          <div>
-            {/* <FavoriteButton quizId={quiz.id} /> */}
+          <div className='mb-8'>
+            <FavoriteButton quizId={quiz.id} />
           </div>
           <div>
             <p>Вопросы:</p>
