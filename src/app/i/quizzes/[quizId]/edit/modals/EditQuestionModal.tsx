@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/buttons/Button'
 import { Field } from '@/components/ui/fields/Field'
 import { FileField } from '@/components/ui/fields/FileField'
 import { Modal } from '@/components/ui/modal/Modal'
+import { UseAnswerCreate } from '@/hooks/useAnswerCreate'
 import { UseAnswerDelete } from '@/hooks/useAnswerDelete'
 import { UseAnswerUpdate } from '@/hooks/useAnswerUpdate'
 import { UseQuestionUpdate } from '@/hooks/useQuestionUpdate'
@@ -42,6 +43,7 @@ export function EditQuestionModal({
 	})
 
 	const { update: updateQuestion } = UseQuestionUpdate()
+	const { mutate: createAnswer} = UseAnswerCreate()
 	const { mutateAsync: updateAnswer } = UseAnswerUpdate()
 	const { mutateAsync: deleteAnswer } = UseAnswerDelete()
 
@@ -61,7 +63,7 @@ export function EditQuestionModal({
 			answers.map(answer =>
 				answer.id
 					? updateAnswer({quizId, questionId, answerId: answer.id, data: answer })
-					: Promise.resolve()
+					: createAnswer({quizId, questionId, data: answer})
 			)
 		)
 
@@ -75,7 +77,7 @@ export function EditQuestionModal({
 	}
 
 	const handleAddAnswer = (answer: IAnswerField) => {
-		setAnswers(prev => [...prev, answer])
+		setAnswers(prev => [...prev, { ...answer, id: undefined }]);
 	}
 
 	const handleUpdateAnswer = (index: number, updated: IAnswerField) => {
