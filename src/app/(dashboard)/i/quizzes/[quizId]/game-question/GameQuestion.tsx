@@ -62,7 +62,7 @@ export default function GameQuestion() {
           {currentQuestion.imagePath && (
             <div className="question__image lg:w-1/3 md:aspect-video md:w-1/2 relative w-full h-full aspect-video bg-gray-300 rounded-xl">
               <img 
-                src={`http://localhost:3001/${currentQuestion.imagePath}`} 
+                src={`${process.env.NEXT_PUBLIC_API_URL_NO_PREFIX}/${currentQuestion.imagePath}`} 
                 alt="" 
                 className='w-full rounded-xl'
               />

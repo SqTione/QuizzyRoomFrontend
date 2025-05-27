@@ -133,7 +133,7 @@ export function Profile() {
 										))}
 										
 									</div>
-									<Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button>
+									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							): (
 								<div className='w-full'>
@@ -157,7 +157,7 @@ export function Profile() {
 											</div>
 										))}
 									</div>
-									<Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button>
+									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							)}
 						</motion.div>

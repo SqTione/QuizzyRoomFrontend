@@ -35,7 +35,7 @@ export function Modal({isOpen, onClose, children}: PropsWithChildren<ModalProps>
 
 					{/* Modal */}
 					<motion.div
-						className='fixed inset-0 flex justify-center items-center p-5 z-50'
+						className='fixed inset-0 flex justify-center items-center p-5 w-screen h-screen z-50'
 						initial={{opacity: 0, scale: 0.95, y: -20}}
 						animate={{opacity: 1, scale: 1, y: 0}}
 						exit={{opacity: 0, scale: 0.95, y: -20}}

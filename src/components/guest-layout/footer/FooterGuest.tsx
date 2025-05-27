@@ -9,7 +9,9 @@ export function FooterGuest() {
 		<footer className="container relative flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm z-20">
 			<div className='md:w-1/4 w-1/2'>
 				<Logo className="block !mb-3" />
-				<p className='mb-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+					<p className='mb-2'>Интерактивные квизы – это современный и увлекательный способ проверить свои знания, закрепить материал и развить критическое мышление. Учитесь, соревнуйтесь и достигайте новых высот с нашими образовательными квизами.
+					Учись весело!
+				</p>
 				<a href="#" className='underline underline-offset-4'>Developed by SqTione</a>
 			</div>
 			<div>
@@ -36,7 +38,6 @@ export function FooterGuest() {
 						</Link>
 					</div>
 					<div className='flex items-center gap-3'>
-						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 					</div>
 				</div>
