@@ -110,7 +110,7 @@ export function Profile() {
 															href={`${DASHBOARD_PAGES.QUIZZES}/${quiz.id}`}>
 																<img src="/icons/play.svg" alt="" />
 														</Button>
-														<FavoriteButton quizId={quiz.id} />
+														{/* <FavoriteButton quizId={quiz.id} /> */}
 														<Button 
 															href={`${DASHBOARD_PAGES.QUIZZES}/${quiz.id}/edit`}
 															className='button--capsule button--warning'>

@@ -1,127 +1,124 @@
+
 'use client'
 
 import { Button } from '@/components/ui/buttons/Button'
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
+import { UseGameState } from '@/hooks/useGameState'
+import { UseQuizForGame } from '@/hooks/useQuizForGame'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check } from 'lucide-react'
+import { useParams, useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 import './game-question.scss'
 
-export function GameQuestion() {
-	return (
-		<main className='container flex flex-col justify-between mt-8 min-h-[92vh]'>
-			<div>
-				{/* Question Header */}
-				<div className='flex flex-col gap-5 mb-5'>
-					<div className='game-question__top-bar flex justify-between items-center'>
-						<h4 className="subtitle">Вопрос 1/12</h4>
-						<div className='status-bar'></div>
-					</div>
-					<hr className='relative z-10' />
-					<h1 className='relative !text-xl z-10'>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h1>
-				</div>
-				{/* Question Body */}
-				<div className='md:flex-row-reverse md:justify-between md:mt-15 flex flex-col'>
-					<div className="question__image md:aspect-video md:w-1/2 relative w-full h-full aspect-video bg-gray-300 rounded-xl">
-						{/* {question.imagePath && (
-							<img src={`http://localhost:3001/${question.imagePath}`} alt="" className='w-full rounded-xl'/>
-						)} */}
-					</div>
-					<div className="question__answers md:mt-0 flex flex-col gap-5 mt-8">
-						<AnimatePresence mode='wait'>
-							<motion.div
-								initial={{opacity: 0, y: 10}}
-								animate={{opacity: 1, y: 0}}
-								exit={{opacity: 0, y: 10}}
-								transition={{duration: 0.2}}
-								className="flex items-center gap-3 mb-3">
-								<button
-									type="button"
-									className={`flex justify-center items-center w-6 h-6 rounded-full border-2 border-black/40 transition-color`}
-									title="Отметить как правильный"
-								>
-									<motion.div
-										initial={{opacity: 0, y: 5}}
-										animate={{opacity: 1, y: 0}}
-										exit={{opacity: 0, y: 5}}
-										transition={{duration: 0.3}}
-									>
-										<Check color="white" size={16} />
-									</motion.div>
-								</button>
-								<p>Ответ</p>
-							</motion.div>
-							<motion.div
-								initial={{opacity: 0, y: 10}}
-								animate={{opacity: 1, y: 0}}
-								exit={{opacity: 0, y: 10}}
-								transition={{duration: 0.2}}
-								className="flex items-center gap-3 mb-3">
-								<button
-									type="button"
-									className={`flex justify-center items-center w-6 h-6 rounded-full border-2 border-black/40 transition-color`}
-									title="Отметить как правильный"
-								>
-									<motion.div
-										initial={{opacity: 0, y: 5}}
-										animate={{opacity: 1, y: 0}}
-										exit={{opacity: 0, y: 5}}
-										transition={{duration: 0.3}}
-									>
-										<Check color="white" size={16} />
-									</motion.div>
-								</button>
-								<p>Ответ</p>
-							</motion.div>
-							<motion.div
-								initial={{opacity: 0, y: 10}}
-								animate={{opacity: 1, y: 0}}
-								exit={{opacity: 0, y: 10}}
-								transition={{duration: 0.2}}
-								className="flex items-center gap-3 mb-3">
-								<button
-									type="button"
-									className={`flex justify-center items-center w-6 h-6 rounded-full border-2 border-black/40 transition-color`}
-									title="Отметить как правильный"
-								>
-									<motion.div
-										initial={{opacity: 0, y: 5}}
-										animate={{opacity: 1, y: 0}}
-										exit={{opacity: 0, y: 5}}
-										transition={{duration: 0.3}}
-									>
-										<Check color="white" size={16} />
-									</motion.div>
-								</button>
-								<p>Ответ</p>
-							</motion.div>
-							<motion.div
-								initial={{opacity: 0, y: 10}}
-								animate={{opacity: 1, y: 0}}
-								exit={{opacity: 0, y: 10}}
-								transition={{duration: 0.2}}
-								className="flex items-center gap-3 mb-3">
-								<button
-									type="button"
-									className={`flex justify-center items-center w-6 h-6 rounded-full border-2 border-black/40 transition-color`}
-									title="Отметить как правильный"
-								>
-									<motion.div
-										initial={{opacity: 0, y: 5}}
-										animate={{opacity: 1, y: 0}}
-										exit={{opacity: 0, y: 5}}
-										transition={{duration: 0.3}}
-									>
-										<Check color="white" size={16} />
-									</motion.div>
-								</button>
-								<p>Ответ</p>
-							</motion.div>
-					</AnimatePresence>
-					</div>
-				</div>
-			</div>
-			<div className="flex flex-col w-full">
-				<Button className="button--success md:self-end md:w-max mb-15">Далее</Button>
-			</div>
-		</main>
-	)
+export default function GameQuestion() {
+	const params = useParams()
+	const quizId = params.quizId as string
+  const { data: quiz, isLoading } = UseQuizForGame(quizId)
+  const router = useRouter()
+  
+  if (!quiz) {
+    router.push(`${DASHBOARD_PAGES.QUIZZES}/${quizId}`)
+    return null
+  }
+
+  const {
+    currentQuestion,
+    currentQuestionIndex,
+    totalQuestions,
+    selectedAnswers,
+		score,
+    handleAnswerSelect,
+    handleNextQuestion,
+    isFinished
+  } = UseGameState(quiz)
+
+  useEffect(() => {
+    if (isFinished) {
+			localStorage.setItem('quizAnswers', JSON.stringify(selectedAnswers))
+      router.push(`${DASHBOARD_PAGES.QUIZZES}/${quizId}/game-end`)
+    }
+  }, [isFinished, quizId, router])
+
+  if (isLoading) return <div>Loading...</div>
+
+  const selectedAnswerId = selectedAnswers.answers.find(
+    a => a.questionId === currentQuestion.id
+  )?.answerId
+
+  return (
+    <main className='container flex flex-col justify-between mt-8 min-h-[92vh]'>
+      <div>
+        <div className='flex flex-col gap-5 mb-5'>
+          <div className='game-question__top-bar flex justify-between items-center'>
+            <h4 className="subtitle">Вопрос {currentQuestionIndex + 1}/{totalQuestions}</h4>
+            <div className='status-bar'></div>
+          </div>
+          <hr className='relative z-10' />
+          <h1 className='relative !text-xl z-10'>{currentQuestion.name}</h1>
+        </div>
+        
+        <div className='md:flex-row-reverse md:justify-between md:mt-15 flex flex-col'>
+          {currentQuestion.imagePath && (
+            <div className="question__image md:aspect-video md:w-1/2 relative w-full h-full aspect-video bg-gray-300 rounded-xl">
+              <img 
+                src={`http://localhost:3001/${currentQuestion.imagePath}`} 
+                alt="" 
+                className='w-full rounded-xl'
+              />
+            </div>
+          )}
+          
+          <div className="question__answers md:mt-0 flex flex-col gap-5 mt-8">
+            <AnimatePresence mode='wait'>
+              {currentQuestion.answers.map(answer => (
+                <motion.div
+                  key={answer.id}
+                  initial={{opacity: 0, y: 10}}
+                  animate={{opacity: 1, y: 0}}
+                  exit={{opacity: 0, y: 10}}
+                  transition={{duration: 0.2}}
+                  className={`flex items-center gap-3 mb-3 p-3 rounded-lg cursor-pointer ${
+                    selectedAnswerId === answer.id ? 'bg-primary/10' : 'hover:bg-gray-100'
+                  }`}
+                  onClick={() => handleAnswerSelect(answer.id)}
+                >
+                  <button
+                    type="button"
+                    className={`flex justify-center items-center w-6 h-6 rounded-full border-2 transition-colors ${
+                      selectedAnswerId === answer.id 
+                        ? 'bg-primary border-primary' 
+                        : 'border-black/40'
+                    }`}
+                  >
+                    {selectedAnswerId === answer.id && (
+                      <motion.div
+                        initial={{opacity: 0, y: 5}}
+                        animate={{opacity: 1, y: 0}}
+                        exit={{opacity: 0, y: 5}}
+                        transition={{duration: 0.3}}
+                      >
+                        <Check color="white" size={16} />
+                      </motion.div>
+                    )}
+                  </button>
+                  <p>{answer.name}</p>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+      
+      <div className="flex flex-col w-full">
+        <Button 
+          className="button--success md:self-end md:w-max mb-15"
+          onClick={handleNextQuestion}
+          disabled={!selectedAnswerId}
+        >
+          {currentQuestionIndex < totalQuestions - 1 ? 'Далее' : 'Завершить'}
+        </Button>
+      </div>
+    </main>
+  )
 }
