@@ -55,7 +55,7 @@ export default function GameEnd() {
           </div>
           <div className='flex gap-5'>
             <div>
-              <p>Правильные ответы:</p>
+              <p>Ответы:</p>
               <h4 className="subtitle">{correctAnswers}/{totalQuestions}</h4>
             </div>
           </div>

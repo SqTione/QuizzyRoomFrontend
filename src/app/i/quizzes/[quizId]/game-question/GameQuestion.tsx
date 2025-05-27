@@ -47,7 +47,7 @@ export default function GameQuestion() {
   )?.answerId
 
   return (
-    <main className='container flex flex-col justify-between mt-8 min-h-[92vh]'>
+    <main className='container flex flex-col justify-between mt-8 gap-5 min-h-[92vh]'>
       <div>
         <div className='flex flex-col gap-5 mb-5'>
           <div className='game-question__top-bar flex justify-between items-center'>
@@ -58,9 +58,9 @@ export default function GameQuestion() {
           <h1 className='relative !text-xl z-10'>{currentQuestion.name}</h1>
         </div>
         
-        <div className='md:flex-row-reverse md:justify-between md:mt-15 flex flex-col'>
+        <div className={`md:flex-row-reverse md:justify-between md:mt-15 flex flex-col ${!currentQuestion.imagePath && 'md:!flex-row'}`}>
           {currentQuestion.imagePath && (
-            <div className="question__image md:aspect-video md:w-1/2 relative w-full h-full aspect-video bg-gray-300 rounded-xl">
+            <div className="question__image lg:w-1/3 md:aspect-video md:w-1/2 relative w-full h-full aspect-video bg-gray-300 rounded-xl">
               <img 
                 src={`http://localhost:3001/${currentQuestion.imagePath}`} 
                 alt="" 
