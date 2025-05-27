@@ -33,7 +33,11 @@ export function Question({question}: TypeQuestionProps) {
 			<div className="question md:flex-row flex flex-col gap-5">
 				<div className="question__image xl:w-1/2 md:aspect-square md:w-1/3 relative w-full h-full aspect-square bg-gray-300 rounded-xl">
 					{question.imagePath && (
-						<img src={`http://localhost:3001/${question.imagePath}`} alt="" className='w-full rounded-xl'/>
+						<img
+							src={`${process.env.NEXT_PUBLIC_API_URL_NO_PREFIX}/${question.imagePath}`}
+							alt=""
+							className="w-full rounded-xl"
+						/>
 					)}
 					
 					<div className='absolute top-2 right-2 flex flex-col gap-1'>

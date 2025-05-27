@@ -52,7 +52,6 @@ export function Profile() {
 				</div>
 				<div className='grid grid-cols-2 gap-3'>
 					<Button href={DASHBOARD_PAGES.CREATE_QUIZ}>Создать квиз</Button>
-					<button>Редактировать профиль</button>
 				</div>
 			</main>
 
@@ -134,7 +133,7 @@ export function Profile() {
 										))}
 										
 									</div>
-									<Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button>
+									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							): (
 								<div className='w-full'>
@@ -158,7 +157,7 @@ export function Profile() {
 											</div>
 										))}
 									</div>
-									<Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button>
+									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							)}
 						</motion.div>

@@ -12,7 +12,9 @@ export function Home() {
 					<div className="md:w-full md:pr-0 pr-6 w-1/2">
 						<h1 className='md:pt-5 mb-5'>Онлайн квизы!</h1>
 						<hr className='mb-5 w-full'/>
-						<p className='mb-8'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at tristique felis. </p>
+						 <p className="mb-8">
+                Интерактивные квизы – это современный и увлекательный способ проверить свои знания, закрепить материал и развить критическое мышление. Учитесь, соревнуйтесь и достигайте новых высот с нашими образовательными квизами.
+              </p>
 						<Button className='md:!flex !hidden w-full'>Начнём!</Button>
 					</div>
 					<div className="md:pl-0 md:pb-5 md:w-full md:border-l-transparent md:border-b pl-6 border-l">
@@ -35,27 +37,34 @@ export function Home() {
 				<h2>Как это работает?</h2>
 				<hr />
 			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa dignissim mollis. Etiam feugiat pulvinar quam ac  tincidunt. Sed non finibus quam. Sed varius venenatis ex vel mattis.  Nunc sit amet commodo neque, ut posuere augue. Integer tincidunt leo  mollis ante aliquam convallis.</p>
+			<p> Наши квизы построены на основе актуальных образовательных методик, которые делают обучение интерактивным и запоминающимся. Просто выбирайте интересующую тему и начинайте тестироваться. Каждый правильный ответ приближает вас к новым знаниям и наградам.</p>
 
 			{/* FAQ Accordions */}
 			<div className="flex flex-col gap-5 !mt-5">
 				<Accordion title='Участие в квизе'>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa dignissim mollis. Etiam feugiat pulvinar quam ac  tincidunt. Sed non finibus quam. Sed varius venenatis ex vel mattis.  Nunc sit amet commodo neque, ut posuere augue. Integer tincidunt leo  mollis ante aliquam convallis.</p>
+					<p>Чтобы принять участие, зарегистрируйтесь и выберите интересующий вас квиз. Вы сможете соревноваться с другими участниками и отслеживать свои результаты в личном кабинете.</p>
 				</Accordion>
 				<Accordion title='Создание квиза'>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa dignissim mollis. Etiam feugiat pulvinar quam ac  tincidunt. Sed non finibus quam. Sed varius venenatis ex vel mattis.  Nunc sit amet commodo neque, ut posuere augue. Integer tincidunt leo  mollis ante aliquam convallis.</p>
+					<p>
+						Для создания квиза вам необходима зарегистрироваться и нажать кнопку "Создать квиз". После заполнения формы вы сможете пройти его самостоятельно или поделиться с учениками или друзьями
+					</p>
 				</Accordion>
 			</div>
 		</section>
 		{/* Section "About" */}
 		<section className='container section mb-15'>
-			<h4 className="subtitle mb-3">Квизы</h4>
+			<h4 className="subtitle mb-3">Образовательные возможности квизов</h4>
 			<div className="flex flex-col gap-5 !mb-5 w-2/3">
 				<hr />
-				<h2>Квизы в образовании?</h2>
+					<h2>Почему квизы эффективны в обучении?</h2>
 				<hr />
 			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mattis  dui commodo massa dignissim mollis. Etiam feugiat pulvinar quam ac  tincidunt. Sed non finibus quam. Sed varius venenatis ex vel mattis.  Nunc sit amet commodo neque, ut posuere augue. Integer tincidunt leo  mollis ante aliquam convallis.</p>
+			<p>
+          Квизы помогают закреплять знания через активное повторение, стимулируют интерес и мотивацию, а также позволяют получить обратную связь в режиме реального времени. Это отличный инструмент для самоконтроля и подготовки к экзаменам.
+        </p>
+        <p>
+          Использование квизов способствует развитию логического мышления, улучшает память и способствует более глубокому пониманию материала за счёт интерактивности и геймификации учебного процесса.
+        </p>
 		</section>
 	 </>
 	)
