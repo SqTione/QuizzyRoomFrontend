@@ -12,7 +12,7 @@ class QuizService {
 
 	// Getting user favorite quizzes
 	async getUserFavoriteQuizzes() {
-		const response = await axiosWithAuth.get<TypeUserFavoriteQuizzesResponse>(`${this.BASE_URL}/favorite`)
+		const response = await axiosWithAuth.get<TypeUserFavoriteQuizzesResponse>(`${this.BASE_URL}/favorite/get`)
 		return response.data
 	}
 
