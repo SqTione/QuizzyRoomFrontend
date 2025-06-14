@@ -15,20 +15,24 @@ import { toast } from 'sonner'
 
 
 export function SignIn() {
+	// Getting data from form
 	const {register, handleSubmit, reset} = useForm<ISignInForm>({
 		mode: 'onChange'
 	})
 
 	const {push} = useRouter()
 
+	// Sending request to server
 	const { mutate } = useMutation({
 		mutationKey: ['auth'],
 		mutationFn: (data:ISignInForm) => authService.login(data),
+		// On success response
 		onSuccess(response) {
 			toast.success('Успешный вход в аккаунт')
 			reset()
 			push(DASHBOARD_PAGES.HOME)
 		},
+		// On error response
 		onError: (error: any) => {
 			const serverMessage = error?.response?.data?.message
 			const message = typeof serverMessage === 'string'

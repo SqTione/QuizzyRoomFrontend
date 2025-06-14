@@ -14,6 +14,7 @@ export function Profile() {
 	
 	const { mutate: deleteQuizMutate, isPending: isDeleting } = UseQuizDelete()
 
+	// Getting profile data
 	const {
 		profile,
 		userQuizzes,
@@ -25,6 +26,7 @@ export function Profile() {
 		<div>Загрузка</div>
 	) : (
 		<>
+			{/* Profile */}
 			<main className='md:!w-2/3 container flex flex-col gap-5 mt-8 mb-15 w-full !min-h-0'>
 				<div className='flex gap-2.5 mb-3'>
 					<div className="w-[100px] h-[100px] shrink-0">
@@ -55,6 +57,7 @@ export function Profile() {
 				</div>
 			</main>
 
+			{/* User Quizzes and Favorite Quizzes */}
 			<section className='container mb-15'>
         <div className="relative flex justify-center border-b border-gray-200 mb-5">
           <button
