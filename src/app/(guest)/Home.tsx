@@ -2,6 +2,7 @@
 
 import { Accordion } from '@/components/ui/accordion/Accordion'
 import { Button } from '@/components/ui/buttons/Button'
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
 export function Home() {
 	return (
@@ -21,7 +22,7 @@ export function Home() {
 						<h3>Учись весело!</h3>
 					</div>
 				</div>
-				<Button className='md:!hidden w-1/2'>Начнём!</Button>
+				<Button href={DASHBOARD_PAGES.HOME} className='md:!hidden w-1/2'>Начнём!</Button>
 			</div>
 			<div className="md:relative md:bottom-40 flex justify-center w-full z-0">
 				<img src={'/globe.png'} alt="" className='lg:!w-[550px] lg:-translate-y-1/4 md:!w-[450px] md:-translate-y-1/3 md:left-1/5 relative bottom-4 z-10'/>
