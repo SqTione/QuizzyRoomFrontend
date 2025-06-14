@@ -27,7 +27,7 @@ export function Profile() {
 	) : (
 		<>
 			{/* Profile */}
-			<main className='md:!w-2/3 container flex flex-col gap-5 mt-8 mb-15 w-full !min-h-0'>
+			<main className='container lg:!w-1/2 grid grid-cols-1 gap-5 mt-8 mb-15 w-full !min-h-0'>
 				<div className='flex gap-2.5 mb-3'>
 					<div className="w-[100px] h-[100px] shrink-0">
 						<img
@@ -52,7 +52,7 @@ export function Profile() {
 						</div>
 					</div>
 				</div>
-				<div className='grid grid-cols-2 gap-3'>
+				<div className='lg:w-max md:w-1/2 grid grid-cols-1 gap-3 w-full h-max'>
 					<Button href={DASHBOARD_PAGES.CREATE_QUIZ}>Создать квиз</Button>
 				</div>
 			</main>
