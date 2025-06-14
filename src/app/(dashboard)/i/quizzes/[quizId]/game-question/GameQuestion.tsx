@@ -1,5 +1,6 @@
 'use client'
 
+import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { UseGameState } from '@/hooks/useGameState'
@@ -39,7 +40,8 @@ export default function GameQuestion() {
     }
   }, [isFinished, quizId, router])
 
-  if (isLoading) return <div>Loading...</div>
+  // Show loader while data is loading
+  if (isLoading) return <Loader isLoading={isLoading} />
 
   const selectedAnswerId = selectedAnswers.answers.find(
     a => a.questionId === currentQuestion.id

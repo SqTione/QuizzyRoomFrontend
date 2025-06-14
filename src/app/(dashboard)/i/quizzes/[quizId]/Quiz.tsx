@@ -1,5 +1,6 @@
 'use client'
 
+import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { GoBackButton } from '@/components/ui/buttons/GoBackButton'
@@ -14,7 +15,7 @@ export function Quiz() {
   const { data: quiz, isLoading } = UseQuizForGame(quizId)
   const router = useRouter()
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <Loader isLoading={isLoading} />
   if (!quiz) return <div>Квиз не найден</div>
 
   const handleStartGame = () => {

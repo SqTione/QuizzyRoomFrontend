@@ -5,6 +5,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { Loader } from '../loader/Loader'
 
 type TypeProfileMiniatureProps = {
 	onClick?: () => void
@@ -17,9 +18,8 @@ export function ProfileMiniature({ onClick }: TypeProfileMiniatureProps) {
 
 	if (isLoading) {
 		return (
-			<li className="flex items-center gap-4 px-2 py-3">
-				<div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse" />
-				<p className="text-sm text-muted">Загрузка...</p>
+			<li>
+				<Loader isLoading={isLoading}/>
 			</li>
 		)
 	}

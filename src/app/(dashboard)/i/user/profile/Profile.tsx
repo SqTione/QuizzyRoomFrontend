@@ -1,4 +1,5 @@
 'use client'
+import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
@@ -23,7 +24,7 @@ export function Profile() {
 	} = UseProfilePageData()
 	
 	return isLoading ? ( 
-		<div>Загрузка</div>
+		<Loader isLoading={isLoading} />
 	) : (
 		<>
 			{/* Profile */}
