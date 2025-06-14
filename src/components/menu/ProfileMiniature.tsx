@@ -1,0 +1,77 @@
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
+import { useProfile } from '@/hooks/useProfile'
+import { authService } from '@/services/auth.service'
+import { useQueryClient } from '@tanstack/react-query'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
+type TypeProfileMiniatureProps = {
+	onClick?: () => void
+}
+
+export function ProfileMiniature({ onClick }: TypeProfileMiniatureProps) {
+	const { data, isLoading } = useProfile()
+	const router = useRouter()
+	const queryClient = useQueryClient()
+
+	if (isLoading) {
+		return (
+			<li className="flex items-center gap-4 px-2 py-3">
+				<div className="w-10 h-10 rounded-full bg-gray-200 animate-pulse" />
+				<p className="text-sm text-muted">Загрузка...</p>
+			</li>
+		)
+	}
+
+	// Logout handler
+	const handleLogout = async (e: MouseEvent) => {
+		// Disabling parent events
+		e.stopPropagation()
+		e.preventDefault()
+		
+		// Logout
+		await authService.logout()
+
+		// Deleting Profile Data from cache
+		queryClient.invalidateQueries({ queryKey: ['profile'] })
+
+		// TODO: Disable page reloading
+		window.location.reload()
+	}
+
+	if (!data) return null
+
+	// Rendering profile miniature if we have data
+	return (
+		<li>
+			<Link
+				href={DASHBOARD_PAGES.HOME}
+				onClick={onClick}
+				className="flex items-start gap-4 pb-3 border-b"
+			>
+				<div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+					{data? (
+						<Image
+							src=''
+							alt={data.name || 'Аватар'}
+							width={48}
+							height={48}
+							className="object-cover w-full h-full"
+						/>
+					) : (
+						<div className="flex items-center justify-center w-full h-full text-sm text-white bg-gray-500">
+							{data.name|| '?'}
+						</div>
+					)}
+				</div>
+				<div className="flex flex-col">
+					<h4 className="subtitle">{data.name}</h4>
+					<button 
+						onClick={handleLogout}
+						className='font-medium text-left text-primary underline cursor-pointer'>Выйти</button>
+				</div>
+			</Link>
+		</li>
+	)
+}

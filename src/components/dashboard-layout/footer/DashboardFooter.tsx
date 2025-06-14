@@ -1,12 +1,12 @@
 'use client'
 
 import { MenuItem } from '@/components/menu/MenuItem'
-import { DASHBOARD_MENU } from '@/config/menu-data.config'
+import { DASHBOARD_FOOTER_MENU } from '@/config/menu-data.config'
 import Link from 'next/link'
 import { Logo } from '../../logo/Logo'
 
 export function DashboardFooter() {
-	const menu = DASHBOARD_MENU
+	const menu = DASHBOARD_FOOTER_MENU
 
 	return (
 		<footer className="container relative flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm z-20">

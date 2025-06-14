@@ -158,7 +158,6 @@ export function Profile() {
 											</div>
 										))}
 									</div>
-									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							)}
 						</motion.div>

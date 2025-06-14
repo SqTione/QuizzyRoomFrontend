@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import './menu.scss'
 import { MenuItem } from './MenuItem'
+import { ProfileMiniature } from './ProfileMiniature'
 
 type TypeMenuProps = {
   isAuthenticated?: boolean
@@ -50,6 +51,7 @@ export function Menu({isAuthenticated = false}: TypeMenuProps) {
               <img src="/icons/cross.svg" alt="Закрыть меню" />
             </button>
             <ul className="flex flex-col gap-3 mt-8">
+              <ProfileMiniature onClick={handleCloseMenu}/>
               {menu.map(item => (
                 <MenuItem item={item} key={item.name} onClick={handleCloseMenu} />
               ))}

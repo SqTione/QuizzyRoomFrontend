@@ -28,8 +28,23 @@ export const DASHBOARD_MENU: IMenuItem[] = [
     link: GUEST_PAGES.HOME
   },
   {
+    name: 'Создание квиза',
+    link: DASHBOARD_PAGES.CREATE_QUIZ
+  }
+]
+
+export const DASHBOARD_FOOTER_MENU: IMenuItem[] = [
+	{
+    name: 'Главная',
+    link: GUEST_PAGES.HOME
+  },
+  {
     name: 'Профиль',
     link: DASHBOARD_PAGES.HOME
+  },
+  {
+    name: 'Создание квиза',
+    link: DASHBOARD_PAGES.CREATE_QUIZ
   },
   {
     name: 'Выйти',
