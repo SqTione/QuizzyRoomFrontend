@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { PropsWithChildren, useState } from 'react'
 import './style.scss'
 
@@ -11,21 +12,49 @@ export function Accordion({
 	className,
 	...rest
 }: PropsWithChildren<TypeAccordion>) {
-		const [isActive, setIsActive] = useState(false)
+		const [isOpen, setIsOpen] = useState(false)
 
-		const handleAccordionHeaderClick = () => {
-			setIsActive(!isActive)
-		}
+  const handleToggle = () => {
+    setIsOpen(prev => !prev)
+  }
 
-	return (
-		<div className={isActive ? 'accordion active' : 'accordion'}>
-			<div className="accordion-header" onClick={handleAccordionHeaderClick}>
-				{title}
-				<button><img src="/icons/arrow_down.svg" alt="" /></button>	
-			</div>
-			<div className={isActive ? 'accordion-body active' : 'accordion-body'}>
-				{children}
-			</div>
-		</div>
-	)
+  return (
+    <motion.div
+      className="w-full border-b"
+      initial={false}
+    >
+      <div
+        className="flex justify-between items-center pb-3 font-extrabold text-xl text-black uppercase cursor-pointer"
+        onClick={handleToggle}
+      >
+        <span>{title}</span>
+        <motion.button
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="bg-transparent"
+        >
+          <img src="/icons/arrow_down.svg" alt="" />
+        </motion.button>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: 'auto' },
+              collapsed: { opacity: 0, height: 0 }
+            }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="mt-3 mb-5">{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
 }

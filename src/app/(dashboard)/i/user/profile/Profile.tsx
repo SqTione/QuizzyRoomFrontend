@@ -27,7 +27,7 @@ export function Profile() {
 	) : (
 		<>
 			{/* Profile */}
-			<main className='md:!w-2/3 container flex flex-col gap-5 mt-8 mb-15 w-full !min-h-0'>
+			<main className='container lg:!w-1/2 grid grid-cols-1 gap-5 mt-8 mb-15 w-full !min-h-0'>
 				<div className='flex gap-2.5 mb-3'>
 					<div className="w-[100px] h-[100px] shrink-0">
 						<img
@@ -52,7 +52,7 @@ export function Profile() {
 						</div>
 					</div>
 				</div>
-				<div className='grid grid-cols-2 gap-3'>
+				<div className='lg:w-max md:w-1/2 grid grid-cols-1 gap-3 w-full h-max'>
 					<Button href={DASHBOARD_PAGES.CREATE_QUIZ}>Создать квиз</Button>
 				</div>
 			</main>
@@ -97,10 +97,10 @@ export function Profile() {
 						>
 							{activeTab == 'my' ? (
 								<div className='w-full'>
-									<div className="user-quizzes lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
-										{userQuizzes.data?.length === 0 && (
-											<p className="text-center text-black py-4">У вас пока нет квизов</p>
-										)}
+									{userQuizzes.data?.length === 0 && (
+										<p className="absolute text-center text-black py-4">У вас пока нет квизов</p>
+									)}
+									<div className="user-quizzes relative lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
 										{userQuizzes.data?.map(quiz => (
 											<div className="quiz" key={quiz.id}>
 												<h3 className='mb-3'>{quiz.name}</h3>
@@ -134,16 +134,14 @@ export function Profile() {
 												<hr className='mt-5 border-gray-500'/>
 											</div>
 										))}
-										
 									</div>
-									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							): (
 								<div className='w-full'>
+									{userFavoriteQuizzes.data?.length === 0 && (
+										<p className="relative mx-auto text-center text-black py-4">У вас пока нет избранных квизов</p>
+									)}
 									<div className="favorite-quizzes lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
-										{userFavoriteQuizzes.data?.length === 0 && (
-											<p className="text-center text-black py-4">У вас пока нет избранных квизов</p>
-										)}
 										{userFavoriteQuizzes.data?.map(quiz => (
 											<div className="quiz" key={quiz.id}>
 												<h3 className='mb-3'>{quiz.name}</h3>

@@ -1,33 +1,38 @@
 'use client'
 
-import { GUEST_PAGES } from '@/config/pages-url.config'
+import { MenuItem } from '@/components/menu/MenuItem'
+import { DASHBOARD_MENU } from '@/config/menu-data.config'
 import Link from 'next/link'
 import { Logo } from '../../logo/Logo'
 
-export function FooterGuest() {
+export function DashboardFooter() {
+	const menu = DASHBOARD_MENU
+
 	return (
 		<footer className="container relative flex justify-between flex-wrap gap-8 !pt-16 !pb-10 bg-black text-lemon-100 text-sm z-20">
+			{/* Site info */}
 			<div className='md:w-1/4 w-1/2'>
 				<Logo className="block !mb-3" />
-					<p className='mb-2'>Интерактивные квизы – это современный и увлекательный способ проверить свои знания, закрепить материал и развить критическое мышление. Учитесь, соревнуйтесь и достигайте новых высот с нашими образовательными квизами.
-					Учись весело!
-				</p>
+				<p className='mb-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
 				<a href="#" className='underline underline-offset-4'>Developed by SqTione</a>
 			</div>
+			{/* Site menu */}
 			<div>
 				<h4 className="subtitle mb-3">Меню</h4>
 				<nav>
-					<ul className='flex flex-col gap-2 underline underline-offset-4'>
-						<li><Link href={GUEST_PAGES.HOME}>Главная</Link></li>
-						<li><Link href={GUEST_PAGES.SIGN_IN}>Вход</Link></li>
-						<li><Link href={GUEST_PAGES.SIGN_UP}>Регистрация</Link></li>
+					<ul className='flex flex-col gap-2'>
+					{menu.map(item => (
+						<MenuItem item={item} key={item.name} />
+					))}
 					</ul> 
 				</nav>
 			</div>
+			{/* Contacts */}
 			<div className='md:w-max w-full'>
 				<h4 className="subtitle mb-3">Контактные данные</h4>
 				<div className="md:flex-col flex justify-between flex-wrap gap-3 w-full">
 					<div className='flex flex-col gap-2'>
+						{/* TODO: Add dynamic output of contacts */}
 						<Link href='mailto:quizzyroom@gmail.com' className='flex items-center gap-3'>
 							<img src="/icons/email.svg" alt="" />
 							quizzyroom@gmail.com
@@ -38,6 +43,8 @@ export function FooterGuest() {
 						</Link>
 					</div>
 					<div className='flex items-center gap-3'>
+						{/* TODO: Add dynamic output of socials */}
+						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 					</div>
 				</div>
