@@ -25,7 +25,7 @@ export function ProfileMiniature({ onClick }: TypeProfileMiniatureProps) {
 	}
 
 	// Logout handler
-	const handleLogout = async (e: MouseEvent) => {
+	const handleLogout = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Disabling parent events
 		e.stopPropagation()
 		e.preventDefault()
@@ -35,6 +35,8 @@ export function ProfileMiniature({ onClick }: TypeProfileMiniatureProps) {
 
 		// Deleting Profile Data from cache
 		queryClient.invalidateQueries({ queryKey: ['profile'] })
+
+		console.log('Logout')
 
 		// TODO: Disable page reloading
 		window.location.reload()
@@ -59,16 +61,12 @@ export function ProfileMiniature({ onClick }: TypeProfileMiniatureProps) {
 							height={48}
 							className="object-cover w-full h-full"
 						/>
-					) : (
-						<div className="flex items-center justify-center w-full h-full text-sm text-white bg-gray-500">
-							{data.name|| '?'}
-						</div>
-					)}
+					): null}
 				</div>
 				<div className="flex flex-col">
 					<h4 className="subtitle">{data.name}</h4>
 					<button 
-						onClick={handleLogout}
+						onClick={(e) => handleLogout(e)}
 						className='font-medium text-left text-primary underline cursor-pointer'>Выйти</button>
 				</div>
 			</Link>
