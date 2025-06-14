@@ -97,10 +97,10 @@ export function Profile() {
 						>
 							{activeTab == 'my' ? (
 								<div className='w-full'>
-									<div className="user-quizzes lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
-										{userQuizzes.data?.length === 0 && (
-											<p className="text-center text-black py-4">У вас пока нет квизов</p>
-										)}
+									{userQuizzes.data?.length === 0 && (
+										<p className="absolute text-center text-black py-4">У вас пока нет квизов</p>
+									)}
+									<div className="user-quizzes relative lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
 										{userQuizzes.data?.map(quiz => (
 											<div className="quiz" key={quiz.id}>
 												<h3 className='mb-3'>{quiz.name}</h3>
@@ -134,16 +134,14 @@ export function Profile() {
 												<hr className='mt-5 border-gray-500'/>
 											</div>
 										))}
-										
 									</div>
-									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							): (
 								<div className='w-full'>
+									{userFavoriteQuizzes.data?.length === 0 && (
+										<p className="relative mx-auto text-center text-black py-4">У вас пока нет избранных квизов</p>
+									)}
 									<div className="favorite-quizzes lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
-										{userFavoriteQuizzes.data?.length === 0 && (
-											<p className="text-center text-black py-4">У вас пока нет избранных квизов</p>
-										)}
 										{userFavoriteQuizzes.data?.map(quiz => (
 											<div className="quiz" key={quiz.id}>
 												<h3 className='mb-3'>{quiz.name}</h3>
