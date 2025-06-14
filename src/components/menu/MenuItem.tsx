@@ -15,18 +15,17 @@ export function MenuItem({ item, onClick }: TypeMenuItem) {
           item.onClick?.()
           onClick?.()
         }}
-        className="flex items-center gap-2 text-base text-black"
+        className="menu__item flex items-center gap-2 text-base text-black cursor-pointer"
       >
         <span>{item.name}</span>
       </button>
     )
   }
 
-  // Если onClick нет, а есть ссылка — рендерим Link
   return (
     <Link
       href={item.link || '#'}
-      className="flex items-center gap-2 text-base text-black"
+      className="menu__item flex items-center gap-2 text-base text-black cursor-pointer"
       onClick={onClick}
     >
       <span>{item.name}</span>

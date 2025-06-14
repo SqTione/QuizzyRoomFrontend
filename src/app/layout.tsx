@@ -1,5 +1,3 @@
-import { FooterGuest } from '@/components/guest-layout/footer/FooterGuest'
-import { HeaderGuest } from '@/components/guest-layout/header/HeaderGuest'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
@@ -32,16 +30,12 @@ export default function RootLayout({
 		<html lang='ru'>
 			<body className={`${zen.variable} flex flex-col min-h-screen`}>
 				<Providers>
-				<div className="w-full min-h-screen">
-					<HeaderGuest />
 					{children}
-						<Toaster
-							theme='light'
-							position='bottom-right'
-							duration={1500}
-						/>
-				</div>
-				<FooterGuest />
+
+					<Toaster 
+						theme='light'
+						position='bottom-right'
+						duration={1500}/>
 				</Providers>
 			</body>
 		</html>

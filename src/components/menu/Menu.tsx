@@ -1,21 +1,17 @@
 'use client'
 
 import { DASHBOARD_MENU, GUEST_MENU } from '@/config/menu-data.config'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import './menu.scss'
 import { MenuItem } from './MenuItem'
 
-export function Menu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const menuRef = useRef<HTMLElement | null>(null)
+type TypeMenuProps = {
+  isAuthenticated?: boolean
+}
 
-  // Проверка наличия refreshToken в куках
-  useEffect(() => {
-    // TODO: !!! Заменить на безопасный метод !!!
-    const hasAccess = document.cookie.includes('accessToken=')
-    setIsAuthenticated(hasAccess)
-  }, [])
+export function Menu({isAuthenticated = false}: TypeMenuProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const menuRef = useRef<HTMLElement | null>(null)
 
   const handleToggleMenu = () => {
     setIsOpen(prev => !prev)

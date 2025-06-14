@@ -1,5 +1,11 @@
+import Link from 'next/link'
+
 export function Logo(props: any) {
 	return (
-		<a href="#" className={props.className + ' font-extrabold text-xl'}>QuizzyRoom</a>
+		<Link 
+			href="/" 
+			className={props.className + ' font-extrabold text-xl'}>
+				QuizzyRoom
+		</Link>
 	)
 }
