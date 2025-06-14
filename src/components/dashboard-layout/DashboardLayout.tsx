@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }: PropsWithChildren<unknown>) {
 	return (
 		<>
-			<div className="w-full min-h-screen">
+			<div className="w-full min-h-screen overflow-x-hidden">
 					<DashboardHeader />
 					{children}
 			</div>

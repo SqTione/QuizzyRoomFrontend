@@ -38,9 +38,14 @@ export function Menu({isAuthenticated = false}: TypeMenuProps) {
 
       <nav
         ref={menuRef}
-        className={`burger-menu absolute top-0 right-0 ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:w-1/3 flex flex-col px-5 py-8 w-screen h-screen bg-lemon-100 rounded-l-3xl z-50 transition-all duration-300`}
+        className={`
+          burger-menu fixed top-0 right-0 
+          transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+          md:w-1/3 w-full h-screen 
+          flex flex-col px-5 py-8 
+          bg-lemon-100 rounded-l-3xl z-50 
+          transition-transform duration-300
+        `}
       >
         <button className="burger-menu__close-btn relative" onClick={handleCloseMenu}>
           <img src="/icons/cross.svg" alt="Закрыть меню" />
@@ -54,7 +59,7 @@ export function Menu({isAuthenticated = false}: TypeMenuProps) {
 
       {isOpen && (
         <div
-          className="fixed top-0 left-0 w-screen h-screen z-40 bg-black opacity-40"
+          className="fixed top-0 left-0 w-full h-screen z-40 bg-black opacity-40"
           onClick={handleCloseMenu}
         />
       )}

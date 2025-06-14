@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru'>
-			<body className={`${zen.variable} flex flex-col min-h-screen`}>
+			<body className={`${zen.variable} flex flex-col min-h-full overflow-x-hidden`}>
 				<Providers>
 					{children}
 

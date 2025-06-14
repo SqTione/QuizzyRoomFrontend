@@ -8,7 +8,7 @@ export default function GuestLayout({
 }: PropsWithChildren<unknown>) {
 	return (
 		<>
-			<div className="w-full min-h-screen">
+			<div className="w-full min-h-screen overflow-x-hidden">
 					<GuestHeader />
 					{children}
 			</div>
