@@ -13,7 +13,9 @@ export function GuestFooter() {
 			{/* Site info */}
 			<div className='md:w-1/4 w-1/2'>
 				<Logo className="block !mb-3" />
-				<p className='mb-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+				<p className='mb-2'>
+					Интерактивные квизы – это современный и увлекательный способ проверить свои знания, закрепить материал и развить критическое мышление. Учитесь, соревнуйтесь и достигайте новых высот с нашими образовательными квизами.
+				</p>
 				<a href="#" className='underline underline-offset-4'>Developed by SqTione</a>
 			</div>
 			{/* Site menu */}
@@ -44,7 +46,6 @@ export function GuestFooter() {
 					</div>
 					<div className='flex items-center gap-3'>
 						{/* TODO: Add dynamic output of socials */}
-						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 					</div>
 				</div>

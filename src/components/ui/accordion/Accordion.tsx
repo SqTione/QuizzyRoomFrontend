@@ -27,7 +27,7 @@ export function Accordion({
         className="flex justify-between items-center pb-3 font-extrabold text-xl text-black uppercase cursor-pointer"
         onClick={handleToggle}
       >
-        <span>{title}</span>
+        <h3>{title}</h3>
         <motion.button
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
