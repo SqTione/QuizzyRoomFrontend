@@ -1,5 +1,6 @@
 'use client'
 
+import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { UseQuestionAnswers } from '@/hooks/useQuestionAnswers'
 import { UseQuestionDelete } from '@/hooks/useQuestionDelete'
@@ -28,6 +29,9 @@ export function Question({question}: TypeQuestionProps) {
 	// Getting answers
 	const {data, isLoading} = UseQuestionAnswers(quizId, question.id)
 
+	// Returning Loader if data is loading
+	if (isLoading) return <Loader isLoading={isLoading} />
+	
 	return (
 		<>
 			<div className="question md:flex-row flex flex-col gap-5">

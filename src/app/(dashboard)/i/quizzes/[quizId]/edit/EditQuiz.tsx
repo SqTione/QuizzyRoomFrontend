@@ -91,11 +91,6 @@ export function EditQuiz() {
 					{/* Quiz questions list */}
 					<QuizQuestions />
 				</div>
-				{/* <div id='main-bottom'>
-					<div className="image-block">
-						<img src="/notebook.png" alt="" className=''/>
-					</div>
-				</div> */}
 			</main>
 		</>
 	)

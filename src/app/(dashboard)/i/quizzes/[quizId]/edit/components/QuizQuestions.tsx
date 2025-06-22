@@ -1,5 +1,6 @@
 'use client'
 
+import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { UseQuizQuestions } from '@/hooks/useQuizQuestions'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -11,6 +12,8 @@ import { Question } from './Question'
 export function QuizQuestions() {
 	const {data, isLoading} = UseQuizQuestions()
 	const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+
+	if (isLoading) return <Loader isLoading={isLoading} />
 
 	return (
 		<>

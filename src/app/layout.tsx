@@ -1,3 +1,4 @@
+import { PageTransitionEffect } from '@/components/page-transition-effect/PageTransitionEffect'
 import { SITE_NAME } from '@/constants/seo.constants'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
@@ -30,7 +31,9 @@ export default function RootLayout({
 		<html lang='ru'>
 			<body className={`${zen.variable} flex flex-col min-h-full overflow-x-hidden`}>
 				<Providers>
-					{children}
+					<PageTransitionEffect>
+						{children}
+					</PageTransitionEffect>
 
 					<Toaster 
 						theme='light'

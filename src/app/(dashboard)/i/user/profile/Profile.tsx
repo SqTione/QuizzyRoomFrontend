@@ -1,4 +1,5 @@
 'use client'
+import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
@@ -23,7 +24,7 @@ export function Profile() {
 	} = UseProfilePageData()
 	
 	return isLoading ? ( 
-		<div>Загрузка</div>
+		<Loader isLoading={isLoading} />
 	) : (
 		<>
 			{/* Profile */}
@@ -158,7 +159,6 @@ export function Profile() {
 											</div>
 										))}
 									</div>
-									{/* <Button className='button--bordered md:w-fit md:mx-auto w-full mt-6'>Показать больше</Button> */}
 								</div>
 							)}
 						</motion.div>

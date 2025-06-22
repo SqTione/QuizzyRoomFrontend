@@ -1,9 +1,11 @@
 'use client'
 
 import { DASHBOARD_MENU, GUEST_MENU } from '@/config/menu-data.config'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import './menu.scss'
 import { MenuItem } from './MenuItem'
+import { ProfileMiniature } from './ProfileMiniature'
 
 type TypeMenuProps = {
   isAuthenticated?: boolean
@@ -36,33 +38,38 @@ export function Menu({isAuthenticated = false}: TypeMenuProps) {
         </div>
       </button>
 
-      <nav
-        ref={menuRef}
-        className={`
-          burger-menu fixed top-0 right-0 
-          transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-          md:w-1/3 w-full h-screen 
-          flex flex-col px-5 py-8 
-          bg-lemon-100 rounded-l-3xl z-50 
-          transition-transform duration-300
-        `}
-      >
-        <button className="burger-menu__close-btn relative" onClick={handleCloseMenu}>
-          <img src="/icons/cross.svg" alt="Закрыть меню" />
-        </button>
-        <ul className="flex flex-col gap-3 mt-8">
-          {menu.map(item => (
-            <MenuItem item={item} key={item.name} onClick={handleCloseMenu} />
-          ))}
-        </ul>
-      </nav>
-
-      {isOpen && (
-        <div
-          className="fixed top-0 left-0 w-full h-screen z-40 bg-black opacity-40"
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.nav
+            ref={menuRef}
+            initial={{x: '100%'}}
+            animate={{x: 0}}
+            exit={{x: '100%'}}
+            transition={{duration: 0.3, bounce: 'bounce'}}
+            className='burger-menu fixed top-0 right-0 md:w-1/3 w-full h-screen flex flex-col px-5 py-8 bg-lemon-100 rounded-l-3xl z-50'>
+            <button className="burger-menu__close-btn relative" onClick={handleCloseMenu}>
+              <img src="/icons/cross.svg" alt="Закрыть меню" />
+            </button>
+            <ul className="flex flex-col gap-3 mt-8">
+              <ProfileMiniature onClick={handleCloseMenu}/>
+              {menu.map(item => (
+                <MenuItem item={item} key={item.name} onClick={handleCloseMenu} />
+              ))}
+            </ul>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {isOpen && (
+        <motion.div
+          initial={{opacity: 0}}
+          animate={{opacity: '40%'}}
+          exit={{opacity: 0}}
+          className="fixed top-0 left-0 w-full h-screen z-40 bg-black"
           onClick={handleCloseMenu}
         />
       )}
+      </AnimatePresence>
     </>
   )
 }
