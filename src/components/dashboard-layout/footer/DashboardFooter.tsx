@@ -47,7 +47,6 @@ export function DashboardFooter() {
 					<div className='flex items-center gap-3'>
 						{/* TODO: Add dynamic output of socials */}
 						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
-						<Link href='vk.com'><img src="/icons/vk.svg" alt="Вконтакте" /></Link>
 					</div>
 				</div>
 			</div>

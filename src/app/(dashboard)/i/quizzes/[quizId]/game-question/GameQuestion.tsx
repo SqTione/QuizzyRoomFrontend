@@ -62,7 +62,7 @@ export default function GameQuestion() {
         
         <div className={`md:flex-row-reverse md:justify-between md:mt-15 flex flex-col ${!currentQuestion.imagePath && 'md:!flex-row'}`}>
           {currentQuestion.imagePath && (
-            <div className="question__image lg:w-1/3 md:aspect-video md:w-1/2 relative w-full h-auto aspect-square bg-gray-300 rounded-xl">
+            <div className="question__image lg:w-1/3 md:aspect-video md:w-1/2 relative w-auto h-auto aspect-square bg-gray-300 rounded-xl">
               <Image 
                 src={`${process.env.NEXT_PUBLIC_API_URL_NO_PREFIX}/${currentQuestion.imagePath}`} 
                 alt={currentQuestion.name} 
