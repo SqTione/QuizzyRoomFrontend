@@ -81,6 +81,7 @@ h4.subtitle {
 
 main {
 	min-height: calc(100svh - var(--header-height));
+	overflow: hidden;
 }
 
 .section {
