@@ -7,6 +7,7 @@ import { UseGameState } from '@/hooks/useGameState'
 import { UseQuizForGame } from '@/hooks/useQuizForGame'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check } from 'lucide-react'
+import Image from 'next/image'
 import { useParams, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import './game-question.scss'
@@ -62,9 +63,11 @@ export default function GameQuestion() {
         <div className={`md:flex-row-reverse md:justify-between md:mt-15 flex flex-col ${!currentQuestion.imagePath && 'md:!flex-row'}`}>
           {currentQuestion.imagePath && (
             <div className="question__image lg:w-1/3 md:aspect-video md:w-1/2 relative w-full h-full aspect-video bg-gray-300 rounded-xl">
-              <img 
+              <Image 
                 src={`${process.env.NEXT_PUBLIC_API_URL_NO_PREFIX}/${currentQuestion.imagePath}`} 
-                alt="" 
+                alt={currentQuestion.name} 
+                width={1000}
+                height={1000}
                 className='w-full rounded-xl'
               />
             </div>
