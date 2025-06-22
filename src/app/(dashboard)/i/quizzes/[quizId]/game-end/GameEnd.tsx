@@ -14,9 +14,7 @@ export default function GameEnd() {
   const router = useRouter()
   const { mutate, data: resultData, isPending } = UseCheckQuiz()
 
-	console.log('quiz', quiz)
-	console.log('stored answers', localStorage.getItem('quizAnswers'))
-
+  // TODO: Fix incorrect statistics counting
   useEffect(() => {
     if (!quiz) {
       router.push(`${DASHBOARD_PAGES.QUIZZES}/${quizId}`)

@@ -14,7 +14,6 @@ export interface IProfileResponse {
     updatedAt: string;
     totalPassed: number;
     totalWins: number;
-    userId: string;
   }[];
 }
 
