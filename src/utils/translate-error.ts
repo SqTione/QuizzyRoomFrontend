@@ -3,6 +3,7 @@ export function translateErrorMessage(message: string): string {
 		// Sign In Errors
 		case 'email or password is invalid':
 			return 'Неверный логин или пароль.'
+
 		// Sign Up Errors
 		case 'user is already exists':
 			return 'Пользователь с таким Email уже существует.'
@@ -26,8 +27,15 @@ export function translateErrorMessage(message: string): string {
 			return 'Пароль должен содержать хотя бы 1 специальный символ'
 		case 'password must be at least 6 characters long.':
 			return 'Пароль должен содержать хотя бы 6 символов'
+
+		// Update profile errors
+		case 'oldpassword must be a string':
+			return 'Поле "Пароль" обязательно для заполнения'
+		case 'invalid password':
+			return 'Неверный пароль'
+
 		default:
-			return 'Произошла непредвиденная ошибка. Попробуйте позже.'
+			return 'Произошла непредвиденная ошибка. Попробуйте позже'
 	}
 	
 }

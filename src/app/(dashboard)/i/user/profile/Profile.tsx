@@ -9,11 +9,15 @@ import { UseQuizDelete } from '@/hooks/useQuizDelete'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Pencil, Trash } from 'lucide-react'
 import { useState } from 'react'
+import { UpdateProfileModal } from './modals/UpdateProfileModal'
 import './profile.scss'
 
 export function Profile() {
 	// Initializing tabs
 	const [activeTab, setActiveTab] = useState<'my' | 'favorites'>('my')
+
+	// Initializing Edit Profile modal states
+	const [isUpdateProfileModalOpen, setIsUpdateProfileModalOpen] = useState(false)
 	
 	const { mutate: deleteQuizMutate, isPending: isDeleting } = UseQuizDelete()
 
@@ -39,7 +43,7 @@ export function Profile() {
 						<div className='pl-2.5 mb-3'>
 							<div className="flex items-center gap-3 mb-3">
 								<h3 className=''>{profile?.data?.name}</h3>
-								<button className='cursor-pointer'>
+								<button className='cursor-pointer' onClick={() => {setIsUpdateProfileModalOpen(true)}}>
 									<Pencil
 										width={18}
 										height={18}
@@ -172,6 +176,13 @@ export function Profile() {
 					</AnimatePresence>
 					</div>
       </section>
+
+			{/* Modal for Updating Profile */}
+			<UpdateProfileModal
+				isOpen={isUpdateProfileModalOpen}
+				onClose={() => setIsUpdateProfileModalOpen(false)}
+				initialData={profile.data}
+			/>
 		</>
 	)
 }

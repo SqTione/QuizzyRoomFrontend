@@ -5,8 +5,9 @@ interface InputFieldProps {
 	id: string
 	label: string
 	extra?: string
-	placeholder: string
+	placeholder?: string
 	variant?: string
+	autocomplete?: 'on' | 'off'
 	state?: 'error' | 'success'
 	disabled?: boolean
 	type?: string

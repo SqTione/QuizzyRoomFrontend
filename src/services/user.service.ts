@@ -1,5 +1,4 @@
 import { axiosWithAuth } from '@/api/interceptors'
-import { TypeUserForm } from '@/types/user.types'
 
 export interface IProfileResponse {
 	id: string;
@@ -29,9 +28,12 @@ class UserService {
 	}
 
 	// Updating user profile data
-	async update(data: TypeUserForm) {
-		const response = await axiosWithAuth.put(this.BASE_URL, data)
-		return response.data
+	async update(data: FormData) {
+		return await axiosWithAuth.put(this.BASE_URL, data, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
 	}
 
 	// Delete user profile
