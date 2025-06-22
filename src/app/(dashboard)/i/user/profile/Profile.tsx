@@ -2,6 +2,7 @@
 import { Loader } from '@/components/loader/Loader'
 import { Button } from '@/components/ui/buttons/Button'
 import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
+import { UserProfileImage } from '@/components/user-profile-image/UserProfileImage'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { UseProfilePageData } from '@/hooks/useProfilePageData'
 import { UseQuizDelete } from '@/hooks/useQuizDelete'
@@ -11,6 +12,7 @@ import { useState } from 'react'
 import './profile.scss'
 
 export function Profile() {
+	// Initializing tabs
 	const [activeTab, setActiveTab] = useState<'my' | 'favorites'>('my')
 	
 	const { mutate: deleteQuizMutate, isPending: isDeleting } = UseQuizDelete()
@@ -31,14 +33,19 @@ export function Profile() {
 			<main className='container lg:!w-1/2 grid grid-cols-1 gap-5 mt-8 mb-15 w-full !min-h-0'>
 				<div className='flex gap-2.5 mb-3'>
 					<div className="w-[100px] h-[100px] shrink-0">
-						<img
-							className='w-full h-full bg-gray-300 rounded-full'
-							src="/default_avatar.png"
-							alt="" />
+						<UserProfileImage />
 					</div>
 					<div className='w-full'>
 						<div className='pl-2.5 mb-3'>
-							<h3 className='mb-3'>{profile?.data?.name}</h3>
+							<div className="flex items-center gap-3 mb-3">
+								<h3 className=''>{profile?.data?.name}</h3>
+								<button className='cursor-pointer'>
+									<Pencil
+										width={18}
+										height={18}
+								 />
+								</button>
+							</div>
 							<hr />
 						</div>
 						<div className='statistics flex gap-5'>

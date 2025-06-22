@@ -7,6 +7,7 @@ export interface IProfileResponse {
   updatedAt: string;
   name: string;
   email: string;
+	avatarPath: string;
   roleId: string;
   userStatistics: {
     id: string;

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/buttons/Button'
 import { UseQuestionAnswers } from '@/hooks/useQuestionAnswers'
 import { UseQuestionDelete } from '@/hooks/useQuestionDelete'
 import { Edit, Trash } from 'lucide-react'
+import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 import { EditQuestionModal } from '../modals/EditQuestionModal'
@@ -37,9 +38,11 @@ export function Question({question}: TypeQuestionProps) {
 			<div className="question md:flex-row flex flex-col gap-5">
 				<div className="question__image xl:w-1/2 md:aspect-square md:w-1/3 relative w-full h-full aspect-square bg-gray-300 rounded-xl">
 					{question.imagePath && (
-						<img
+						<Image
 							src={`${process.env.NEXT_PUBLIC_API_URL_NO_PREFIX}/${question.imagePath}`}
-							alt=""
+							alt={`${question.name}`}
+							width={400}
+							height={400}
 							className="w-full rounded-xl"
 						/>
 					)}

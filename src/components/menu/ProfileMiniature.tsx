@@ -2,10 +2,10 @@ import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { useProfile } from '@/hooks/useProfile'
 import { authService } from '@/services/auth.service'
 import { useQueryClient } from '@tanstack/react-query'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Loader } from '../loader/Loader'
+import { UserProfileImage } from '../user-profile-image/UserProfileImage'
 
 type TypeProfileMiniatureProps = {
 	onClick?: () => void
@@ -54,13 +54,7 @@ export function ProfileMiniature({ onClick }: TypeProfileMiniatureProps) {
 			>
 				<div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
 					{data? (
-						<Image
-							src=''
-							alt={data.name || 'Аватар'}
-							width={48}
-							height={48}
-							className="object-cover w-full h-full"
-						/>
+						<UserProfileImage />
 					): null}
 				</div>
 				<div className="flex flex-col">
