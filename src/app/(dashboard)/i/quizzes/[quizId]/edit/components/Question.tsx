@@ -43,7 +43,7 @@ export function Question({question}: TypeQuestionProps) {
 							alt={`${question.name}`}
 							width={400}
 							height={400}
-							className="w-full rounded-xl"
+							className="w-full h-full aspect-square rounded-xl"
 						/>
 					)}
 					

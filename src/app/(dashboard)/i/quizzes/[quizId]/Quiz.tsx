@@ -6,6 +6,7 @@ import { FavoriteButton } from '@/components/ui/buttons/FavoriteButton'
 import { GoBackButton } from '@/components/ui/buttons/GoBackButton'
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 import { UseQuizForGame } from '@/hooks/useQuizForGame'
+import Image from 'next/image'
 import { useParams, useRouter } from 'next/navigation'
 
 export function Quiz() {
@@ -45,7 +46,7 @@ export function Quiz() {
       </div>
       <div id='main-bottom'>
         <div className="image-block">
-          <img src="/notebook.png" alt="" className=''/>
+          <Image src="/headphones.png" alt="" width={1000} height={1000}/>
         </div>
       </div>
     </main>

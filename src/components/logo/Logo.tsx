@@ -5,7 +5,7 @@ export function Logo(props: any) {
 		<Link 
 			href="/" 
 			className={props.className + ' font-extrabold text-xl'}>
-				QuizzyRoom
+				Онлайн Квиз
 		</Link>
 	)
 }

@@ -23,10 +23,10 @@ export const GUEST_MENU: IMenuItem[] = [
 ]
 
 export const DASHBOARD_MENU: IMenuItem[] = [
-	{
-    name: 'Главная',
-    link: GUEST_PAGES.HOME
-  },
+	// {
+  //   name: 'Главная',
+  //   link: GUEST_PAGES.HOME
+  // },
   {
     name: 'Создание квиза',
     link: DASHBOARD_PAGES.CREATE_QUIZ
@@ -34,10 +34,10 @@ export const DASHBOARD_MENU: IMenuItem[] = [
 ]
 
 export const DASHBOARD_FOOTER_MENU: IMenuItem[] = [
-	{
-    name: 'Главная',
-    link: GUEST_PAGES.HOME
-  },
+	// {
+  //   name: 'Главная',
+  //   link: GUEST_PAGES.HOME
+  // },
   {
     name: 'Профиль',
     link: DASHBOARD_PAGES.HOME

@@ -60,7 +60,7 @@ export default function GameEnd() {
         </div>
       </div>
       
-      <div className="leaderboard">
+      {/* <div className="leaderboard">
         <div className="container relative grid grid-cols-2 gap-5 z-10">
           <div>
             <div className="flex flex-col gap-3 mb-2">
@@ -80,7 +80,7 @@ export default function GameEnd() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
   )
 }

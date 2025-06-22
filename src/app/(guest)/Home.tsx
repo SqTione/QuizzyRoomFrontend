@@ -2,12 +2,12 @@
 
 import { Accordion } from '@/components/ui/accordion/Accordion'
 import { Button } from '@/components/ui/buttons/Button'
-import { DASHBOARD_PAGES } from '@/config/pages-url.config'
+import { GUEST_PAGES } from '@/config/pages-url.config'
 
 export function Home() {
 	return (
 	 <>
-	 	<main className="container relative flex flex-col justify-between w-ful z-20">
+	 	<main className="container relative flex flex-col justify-between z-20">
 			<div>
 				<div className="md:flex-col-reverse md:mt-20 md:w-1/3 flex mb-5 w-full">
 					<div className="md:w-full md:pr-0 pr-6 w-1/2">
@@ -22,7 +22,7 @@ export function Home() {
 						<h3>Учись весело!</h3>
 					</div>
 				</div>
-				<Button href={DASHBOARD_PAGES.HOME} className='md:!hidden w-1/2'>Начнём!</Button>
+				<Button href={GUEST_PAGES.SIGN_IN} className='md:!hidden w-1/2'>Начнём!</Button>
 			</div>
 			<div className="md:relative md:bottom-40 flex justify-center w-full z-0">
 				<img src={'/globe.png'} alt="" className='lg:!w-[550px] lg:-translate-y-1/4 md:!w-[450px] md:-translate-y-1/3 md:left-1/5 relative bottom-4 z-10'/>
@@ -38,17 +38,29 @@ export function Home() {
 				<h2>Как это работает?</h2>
 				<hr />
 			</div>
-			<p> Наши квизы построены на основе актуальных образовательных методик, которые делают обучение интерактивным и запоминающимся. Просто выбирайте интересующую тему и начинайте тестироваться. Каждый правильный ответ приближает вас к новым знаниям и наградам.</p>
+			<p>
+				Наша платформа превращает создание и прохождение квизов в простую и увлекательную процедуру. В пару кликов вы присоединяетесь к любому тесту или создаёте собственный — собираете учеников или друзей, проверяете знания и сразу же видите результаты.
+			</p>
 
 			{/* FAQ Accordions */}
 			<div className="flex flex-col gap-5 !mt-5">
 				<Accordion title='Участие в квизе'>
-					<p>Чтобы принять участие, зарегистрируйтесь и выберите интересующий вас квиз. Вы сможете соревноваться с другими участниками и отслеживать свои результаты в личном кабинете.</p>
+					<h4 className='md-6 text-lg font-bold'>Принять участие в квизе крайне просто! Достаточно следовать этим шагам:</h4>
+					<ol className='mb-3 list-decimal list-inside '>
+						<li>Авторизуйтесь или зарегистрируйтесь.</li>
+						<li>Получите ссылку на квиз от преподавателя или друга.</li>
+						<li>Отвечайте на вопросы.</li>
+						<li>Получите результаты.</li>
+					</ol>
 				</Accordion>
 				<Accordion title='Создание квиза'>
-					<p>
-						Для создания квиза вам необходима зарегистрироваться и нажать кнопку "Создать квиз". После заполнения формы вы сможете пройти его самостоятельно или поделиться с учениками или друзьями
-					</p>
+					<h4 className='md-6 text-lg font-bold'>Вы можете создать свой квиз в несколько кликов! Всего лишь нужно:</h4>
+					<ol className='mb-3 list-decimal list-inside '>
+						<li>Авторизоваться или зарегистрироваться.</li>
+						<li>В профиле нажать на кнопку "Создать квиз" и настроить его.</li>
+						<li>В профиле нажать на кнопку "Редактировать квиз" и добавить вопросы.</li>
+						<li>Отправить квиз ученикам или друзьям и проверить результаты.</li>
+					</ol>
 				</Accordion>
 			</div>
 		</section>
