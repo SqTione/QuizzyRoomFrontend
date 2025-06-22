@@ -56,6 +56,9 @@ export function UpdateProfileModal({
 
 			// Updating profile data on page
 			queryClient.invalidateQueries({queryKey: ['profile']})
+
+			// Close modal
+			onClose()
 		},
 		onError: (error: any) => {
 			const serverMessage = error?.response?.data?.message

@@ -110,7 +110,7 @@ export function Profile() {
 							{activeTab == 'my' ? (
 								<div className='w-full'>
 									{userQuizzes.data?.length === 0 && (
-										<p className="absolute text-center text-black py-4">У вас пока нет квизов</p>
+										<p className="relative text-center text-black py-4">У вас пока нет квизов</p>
 									)}
 									<div className="user-quizzes relative lg:grid-cols-2 grid grid-cols-1 gap-8 mb-6">
 										{userQuizzes.data?.map(quiz => (

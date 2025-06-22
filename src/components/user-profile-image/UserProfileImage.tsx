@@ -17,7 +17,7 @@ export function UserProfileImage() {
 		} else {
 			return (
 			<div className='flex justify-center items-center w-full h-full rounded-full bg-gray-400'>
-				<p className='font-bold text-xl text-center'>{data?.name}</p>
+				<p className='font-bold text-3xl text-center text-black uppercase'>{data?.name.split('')[0]}</p>
 			</div>
 			)
 		}
